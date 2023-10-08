@@ -1,0 +1,30 @@
+{
+  "name": "brokiem.github.io",
+  "version": "0.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "license": "LGPL-3.0-or-later",
+  "devDependencies": {
+    "@nanostores/solid": "^0.4.2",
+    "@solidjs/router": "^0.8.3",
+    "@unocss/preset-attributify": "^0.56.5",
+    "@unocss/preset-uno": "^0.56.5",
+    "@unocss/reset": "^0.56.5",
+    "@unocss/vite": "^0.53.1",
+    "lanyard-wrapper": "^2.0.1",
+    "nanostores": "^0.9.3",
+    "solid-transition-group": "^0.2.3",
+    "typescript": "^5.1.3",
+    "vite": "^4.3.9",
+    "vite-plugin-solid": "^2.7.0"
+  },
+  "dependencies": {
+    "solid-js": "^1.7.6"
+  }
+}

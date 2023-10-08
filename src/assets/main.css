@@ -1,0 +1,97 @@
+:root {
+  font-family: "Plus Jakarta Sans", Inter, sans-serif;
+
+  color-scheme: light;
+  color: #ffffff;
+  background-color: #211A1A;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+.slide-up {
+  animation: slide-up 500ms cubic-bezier(0.2, 0, 0, 1) 1 forwards;
+}
+
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(1.1rem);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.dot {
+  display: inline-block;
+  opacity: 20%;
+  animation: dot-blink 1s infinite;
+}
+
+.dot-1 {
+  animation-delay: 0.1s;
+}
+
+.dot-2 {
+  animation-delay: 0.2s;
+}
+
+.dot-3 {
+  animation-delay: 0.3s;
+}
+
+@keyframes dot-blink {
+  0% {
+    opacity: 20%;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 20%;
+  }
+}
+
+.slide-fade-enter-active {
+  transition: all 0.3s ease-out;
+}
+
+.slide-fade-exit-active {
+  transition: all 0.2s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter,
+.slide-fade-exit-to {
+  transform: translateY(10px);
+  opacity: 0;
+}
+
+/* Custom scrollbar */
+/* Firefox */
+* {
+  scrollbar-color: #C7A0A0 transparent !important;
+  scrollbar-width: thin !important;
+}
+
+/* WebKit */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C7A0A0;
+  border-radius: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8d7272;
+  border-radius: 0.5rem;
+}
