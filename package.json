@@ -16,7 +16,7 @@
     "@unocss/preset-attributify": "^0.56.5",
     "@unocss/preset-uno": "^0.56.5",
     "@unocss/reset": "^0.56.5",
-    "@unocss/vite": "^0.53.1",
+    "@unocss/vite": "^0.56.5",
     "lanyard-wrapper": "^2.0.1",
     "nanostores": "^0.9.3",
     "solid-transition-group": "^0.2.3",
