@@ -3,7 +3,7 @@ import solid from 'vite-plugin-solid';
 import UnoCSS from '@unocss/vite';
 
 export default defineConfig({
-  base: '/website/',
+  base: '/',
   plugins: [
     solid(),
     UnoCSS(),
