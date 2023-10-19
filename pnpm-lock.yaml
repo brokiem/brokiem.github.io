@@ -27,7 +27,7 @@ devDependencies:
     version: 0.56.5
   '@unocss/vite':
     specifier: ^0.56.5
-    version: 0.56.5(vite@4.4.11)
+    version: 0.56.5(vite@4.5.0)
   lanyard-wrapper:
     specifier: ^2.0.1
     version: 2.0.1
@@ -41,11 +41,11 @@ devDependencies:
     specifier: ^5.2.2
     version: 5.2.2
   vite:
-    specifier: ^4.4.11
-    version: 4.4.11
+    specifier: ^4.5.0
+    version: 4.5.0
   vite-plugin-solid:
     specifier: ^2.7.1
-    version: 2.7.1(solid-js@1.8.1)(vite@4.4.11)
+    version: 2.7.1(solid-js@1.8.1)(vite@4.5.0)
 
 packages:
 
@@ -885,7 +885,7 @@ packages:
       css-tree: 2.3.1
     dev: true
 
-  /@unocss/vite@0.56.5(vite@4.4.11):
+  /@unocss/vite@0.56.5(vite@4.5.0):
     resolution: {integrity: sha512-X4nvIukXTH//d+Oc97nJogK04sVGw4fc5LhVV1DjHQVmAOAmhTJCG6SxWGoSeqqUMx5X3gI9fVILK+5O8yl5EA==}
     peerDependencies:
       vite: ^2.9.0 || ^3.0.0-0 || ^4.0.0
@@ -900,7 +900,7 @@ packages:
       chokidar: 3.5.3
       fast-glob: 3.3.1
       magic-string: 0.30.4
-      vite: 4.4.11
+      vite: 4.5.0
     transitivePeerDependencies:
       - rollup
     dev: true
@@ -1459,7 +1459,7 @@ packages:
     resolution: {integrity: sha512-hGdgQozCsQJMyfK5urgFcWEqsSSrK63Awe0t/IMR0bZ0QMtnuaiHzThW81guu3qx9abLi99NEuiaN6P9gVYsNg==}
     dev: true
 
-  /vite-plugin-solid@2.7.1(solid-js@1.8.1)(vite@4.4.11):
+  /vite-plugin-solid@2.7.1(solid-js@1.8.1)(vite@4.5.0):
     resolution: {integrity: sha512-1rTuJdsDqCZiAWfiEkUeRRz4MaxWhqzgJ6PURN+bBSp4uACA/esgYN9Un++YE+xeXUOHlOwTF+VSdvieEcMz0w==}
     peerDependencies:
       solid-js: ^1.7.2
@@ -1472,14 +1472,14 @@ packages:
       merge-anything: 5.1.7
       solid-js: 1.8.1
       solid-refresh: 0.5.3(solid-js@1.8.1)
-      vite: 4.4.11
-      vitefu: 0.2.4(vite@4.4.11)
+      vite: 4.5.0
+      vitefu: 0.2.4(vite@4.5.0)
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /vite@4.4.11:
-    resolution: {integrity: sha512-ksNZJlkcU9b0lBwAGZGGaZHCMqHsc8OpgtoYhsQ4/I2v5cnpmmmqe5pM4nv/4Hn6G/2GhTdj0DhZh2e+Er1q5A==}
+  /vite@4.5.0:
+    resolution: {integrity: sha512-ulr8rNLA6rkyFAlVWw2q5YJ91v098AFQ2R0PRFwPzREXOUJQPtFUG0t+/ZikhaOCDqFoDhN6/v8Sq0o4araFAw==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
@@ -1513,7 +1513,7 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitefu@0.2.4(vite@4.4.11):
+  /vitefu@0.2.4(vite@4.5.0):
     resolution: {integrity: sha512-fanAXjSaf9xXtOOeno8wZXIhgia+CZury481LsDaV++lSvcU2R9Ch2bPh3PYFyoHW+w9LqAeYRISVQjUIew14g==}
     peerDependencies:
       vite: ^3.0.0 || ^4.0.0
@@ -1521,7 +1521,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 4.4.11
+      vite: 4.5.0
     dev: true
 
   /yallist@3.1.1:
