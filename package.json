@@ -18,7 +18,7 @@
     "@unocss/reset": "^0.56.5",
     "@unocss/vite": "^0.56.5",
     "lanyard-wrapper": "^2.0.1",
-    "nanostores": "^0.9.3",
+    "nanostores": "^0.9.4",
     "solid-transition-group": "^0.2.3",
     "typescript": "^5.2.2",
     "vite": "^4.4.11",
