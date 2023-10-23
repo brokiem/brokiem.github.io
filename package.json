@@ -13,7 +13,7 @@
   "devDependencies": {
     "@nanostores/solid": "^0.4.2",
     "@solidjs/router": "^0.8.3",
-    "@unocss/preset-attributify": "^0.56.5",
+    "@unocss/preset-attributify": "^0.57.0",
     "@unocss/preset-uno": "^0.56.5",
     "@unocss/reset": "^0.56.5",
     "@unocss/vite": "^0.53.6",
