@@ -57,7 +57,7 @@ const Header = () => {
         flex={"~"}
         justify={"between"}
         rounded={"3xl"}
-        bg={"#3c3131"}
+        bg={"#2f2525"}
         w={"full"}
       >
         <div flex={"~"} items={"center"} p={"y-5"} m={"x-auto"} gap={"4"}>
