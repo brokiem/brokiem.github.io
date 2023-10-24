@@ -19,7 +19,7 @@ devDependencies:
   '@unocss/preset-attributify':
     specifier: ^0.57.1
     version: 0.57.1
-  '@unocss/preset-uno':
+  '@unocss/preset-wind':
     specifier: ^0.57.1
     version: 0.57.1
   '@unocss/reset':
@@ -761,15 +761,6 @@ packages:
     dependencies:
       '@unocss/core': 0.57.1
       '@unocss/extractor-arbitrary-variants': 0.57.1
-      '@unocss/rule-utils': 0.57.1
-    dev: true
-
-  /@unocss/preset-uno@0.57.1:
-    resolution: { integrity: sha512-0+DKZiowYjYzq2swJzQA2dhqDvLJdm0Y437ITzc2GzZMKGUUuNi+w2v3/SzwkpkRd9zTB9/YaOIJVfdrx6ZOXQ== }
-    dependencies:
-      '@unocss/core': 0.57.1
-      '@unocss/preset-mini': 0.57.1
-      '@unocss/preset-wind': 0.57.1
       '@unocss/rule-utils': 0.57.1
     dev: true
 

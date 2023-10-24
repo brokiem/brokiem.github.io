@@ -1,10 +1,10 @@
 import {defineConfig} from '@unocss/vite';
-import {presetUno} from '@unocss/preset-uno';
-import presetAttributify from '@unocss/preset-attributify'
+import presetWind from "@unocss/preset-wind";
+import presetAttributify from '@unocss/preset-attributify';
 
 export default defineConfig({
   presets: [
-    presetUno(),
+    presetWind(),
     presetAttributify()
   ],
 });
