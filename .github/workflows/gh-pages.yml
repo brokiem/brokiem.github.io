@@ -30,13 +30,12 @@ jobs:
         with:
           node-version: 20
           cache: 'yarn'
-          cache-dependency-path: 'yarn.lock'
 
       - name: Setup Yarn
         run: yarn set version stable
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile --immutable
+        run: yarn install --immutable
 
       - name: Build
         run: yarn build
