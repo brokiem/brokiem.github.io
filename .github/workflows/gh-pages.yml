@@ -29,20 +29,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: 'yarn'
+          cache-dependency-path: 'yarn.lock'
 
       - name: Setup Yarn
         run: yarn set version stable
 
-      - name: Cache Yarn packages
-        uses: actions/cache@v3
-        with:
-          path: ~/.yarn
-          key: yarn-${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            yarn-${{ runner.os }}-node-
-
       - name: Install dependencies
-        run: yarn install --immutable
+        run: yarn install --frozen-lockfile --immutable
 
       - name: Build
         run: yarn build
