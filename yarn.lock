@@ -1057,7 +1057,7 @@ __metadata:
     "@unocss/vite": "npm:^0.57.1"
     lanyard-wrapper: "npm:^2.0.1"
     nanostores: "npm:^0.9.4"
-    solid-js: "npm:^1.8.4"
+    solid-js: "npm:^1.8.5"
     solid-transition-group: "npm:^0.2.3"
     typescript: "npm:^5.2.2"
     vite: "npm:^4.5.0"
@@ -2247,13 +2247,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"solid-js@npm:^1.8.4":
-  version: 1.8.4
-  resolution: "solid-js@npm:1.8.4"
+"solid-js@npm:^1.8.5":
+  version: 1.8.5
+  resolution: "solid-js@npm:1.8.5"
   dependencies:
     csstype: "npm:^3.1.0"
     seroval: "npm:^0.12.0"
-  checksum: 3450fd2b4092f9f4e40e7feda005e1a423dd3fecf5d1f012ddd8a5617648cf18e1ff4b19167b655bb5d404da73f1507c36d7e8e300831f64933da18695939e15
+  checksum: c1cb42dbdde3e54efc6d4542e6944d5ca7becb7af738ce432b7cfc36c080b7d7ed2f66b6f54cd1530a8154e0e028b84d60874a422e0b0c1d8d07284094be30ad
   languageName: node
   linkType: hard
 
