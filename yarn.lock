@@ -797,6 +797,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@unocss/core@npm:0.57.3":
+  version: 0.57.3
+  resolution: "@unocss/core@npm:0.57.3"
+  checksum: 496e2938b2081d35a18fe69eaf44d9aa02b8f6649d242c61f7e47bf494ef4d385c45afedb7005b2627c1826806e8daf1b3bbd44b9753efa1161b6741479446de
+  languageName: node
+  linkType: hard
+
 "@unocss/extractor-arbitrary-variants@npm:0.57.1":
   version: 0.57.1
   resolution: "@unocss/extractor-arbitrary-variants@npm:0.57.1"
@@ -817,12 +824,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@unocss/preset-attributify@npm:^0.57.1":
-  version: 0.57.1
-  resolution: "@unocss/preset-attributify@npm:0.57.1"
+"@unocss/preset-attributify@npm:^0.57.3":
+  version: 0.57.3
+  resolution: "@unocss/preset-attributify@npm:0.57.3"
   dependencies:
-    "@unocss/core": "npm:0.57.1"
-  checksum: e9ce25e7490d32fcc3d1c71b418ef552e0e84a0f9af602d290b6b90ebe3b650a058e55325858cf0e8cbf53251daf744412669c409caf8e29736d6a0427c4d6e6
+    "@unocss/core": "npm:0.57.3"
+  checksum: 1eeac30530f47f18d805d97d594117f01d15246ac396d7899f6ab4e36b684c697aa6dcc1c95dfd894360a309697ce4ae01334d742b65316ba2f9da58f0379820
   languageName: node
   linkType: hard
 
@@ -1051,7 +1058,7 @@ __metadata:
   dependencies:
     "@nanostores/solid": "npm:^0.4.2"
     "@solidjs/router": "npm:^0.8.3"
-    "@unocss/preset-attributify": "npm:^0.57.1"
+    "@unocss/preset-attributify": "npm:^0.57.3"
     "@unocss/preset-wind": "npm:^0.57.1"
     "@unocss/reset": "npm:^0.57.1"
     "@unocss/vite": "npm:^0.57.1"
