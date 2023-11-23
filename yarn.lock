@@ -1057,7 +1057,7 @@ __metadata:
     "@unocss/vite": "npm:^0.57.1"
     lanyard-wrapper: "npm:^2.0.1"
     nanostores: "npm:^0.9.4"
-    solid-js: "npm:^1.8.4"
+    solid-js: "npm:^1.8.6"
     solid-transition-group: "npm:^0.2.3"
     typescript: "npm:^5.2.2"
     vite: "npm:^4.5.0"
@@ -2178,10 +2178,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"seroval@npm:^0.12.0":
-  version: 0.12.0
-  resolution: "seroval@npm:0.12.0"
-  checksum: c41e9bdea8ea121c4f73c88117e5a8c5d242a1cf669a0b63dbdc687df762d66f112a1fd4da4a8a22e1d923abda1cc10aad3479909a49bb0b1a1d0ebbfc4c2d2d
+"seroval@npm:^0.14.1":
+  version: 0.14.1
+  resolution: "seroval@npm:0.14.1"
+  checksum: 53ee18d2d74750081ce5deb903aca36101b723adcfbc0f9c0697a3f01238dd810fec9fb9e20ac2a46e3791e274bbf7a716874b03efd6e0e81b80f7c1f747cbdb
   languageName: node
   linkType: hard
 
@@ -2247,13 +2247,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"solid-js@npm:^1.8.4":
-  version: 1.8.4
-  resolution: "solid-js@npm:1.8.4"
+"solid-js@npm:^1.8.6":
+  version: 1.8.6
+  resolution: "solid-js@npm:1.8.6"
   dependencies:
     csstype: "npm:^3.1.0"
-    seroval: "npm:^0.12.0"
-  checksum: 3450fd2b4092f9f4e40e7feda005e1a423dd3fecf5d1f012ddd8a5617648cf18e1ff4b19167b655bb5d404da73f1507c36d7e8e300831f64933da18695939e15
+    seroval: "npm:^0.14.1"
+  checksum: 3161e99b3eb85caed9ce24febd1a1bc1c59007d54390ecb3cee435116729fb272d7f06798787dff7586533605ca4a9ae78a80dc8b7ae32ae8ca4bf6b591b90c5
   languageName: node
   linkType: hard
 
