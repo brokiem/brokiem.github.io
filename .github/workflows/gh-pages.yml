@@ -25,23 +25,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-#          cache: 'yarn'
-
-      - name: Enable corepack for yarn
-        run: corepack enable yarn
-
-      - name: Setup Yarn
-        run: yarn set version stable
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
 
       - name: Install dependencies
-        run: yarn install
+        run: bun install
 
       - name: Build
-        run: yarn build
+        run: bun run build
 
       - name: Setup Pages
         uses: actions/configure-pages@v3
