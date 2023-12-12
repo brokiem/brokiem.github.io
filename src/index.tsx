@@ -1,5 +1,5 @@
 import {render} from "solid-js/web";
-import {Route, Router} from "@solidjs/router";
+import {Route, HashRouter} from "@solidjs/router";
 import * as lanyard from "lanyard-wrapper";
 import {$data, $isLoading} from "./store";
 import "uno.css";
@@ -15,8 +15,8 @@ lanyard.connectWebSocket("548120702373593090", (data: lanyard.Data) => {
 });
 
 render(() => (
-  <Router>
+  <HashRouter>
     <Route path="/" component={MainPage}/>
     <Route path="/projects" component={ProjectsPage}/>
-  </Router>
+  </HashRouter>
 ), document.getElementById("root")!);
