@@ -16,7 +16,7 @@
     "@solidjs/router": "^0.10.5",
     "@unocss/preset-attributify": "^0.58.0",
     "@unocss/preset-wind": "^0.58.0",
-    "@unocss/reset": "^0.58.0",
+    "@unocss/reset": "^0.58.1",
     "@unocss/vite": "^0.58.0",
     "lanyard-wrapper": "^2.0.1",
     "nanostores": "^0.9.5",
