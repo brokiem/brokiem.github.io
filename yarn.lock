@@ -966,12 +966,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@unocss/extractor-arbitrary-variants@npm:0.58.2":
-  version: 0.58.2
-  resolution: "@unocss/extractor-arbitrary-variants@npm:0.58.2"
+"@unocss/core@npm:0.58.3, @unocss/core@npm:^0.58.3":
+  version: 0.58.3
+  resolution: "@unocss/core@npm:0.58.3"
+  checksum: d07f418cf4dcca29e67ace0b3d61a97d9af17755aecf21cb658a97d3ebabc3b0557446fea2b8e92eed3a981a8c01739d3ac303559f725cbd228f8befca483181
+  languageName: node
+  linkType: hard
+
+"@unocss/extractor-arbitrary-variants@npm:0.58.3":
+  version: 0.58.3
+  resolution: "@unocss/extractor-arbitrary-variants@npm:0.58.3"
   dependencies:
-    "@unocss/core": "npm:0.58.2"
-  checksum: d9c303def872e5a740f07fc41d25bd75cf7f0507e175fae39c925d93c2671f80951a3da030803a987fe1032f86f83a40f0e1b726330fbe74f26fb1582c5ad74e
+    "@unocss/core": "npm:0.58.3"
+  checksum: eeb8c3f749b3638688c8c04ae4c0cb9be9831dd47d90e7e77342ce3f65328e5af6e95a67918777a5af277c0fd05ba583656f6745aa0e9f06f3a7d04e118c8f41
   languageName: node
   linkType: hard
 
@@ -996,25 +1003,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@unocss/preset-mini@npm:0.58.2":
-  version: 0.58.2
-  resolution: "@unocss/preset-mini@npm:0.58.2"
+"@unocss/preset-mini@npm:0.58.3":
+  version: 0.58.3
+  resolution: "@unocss/preset-mini@npm:0.58.3"
   dependencies:
-    "@unocss/core": "npm:0.58.2"
-    "@unocss/extractor-arbitrary-variants": "npm:0.58.2"
-    "@unocss/rule-utils": "npm:0.58.2"
-  checksum: fc01c38e66d8a7a011114fe3d217e689c5e176de4e3e58c57d3a4f7460516e910fb76760e8b1afac894ee26408ee52e0cc80f4e8cf82690e7c5b5756dcca1d2c
+    "@unocss/core": "npm:0.58.3"
+    "@unocss/extractor-arbitrary-variants": "npm:0.58.3"
+    "@unocss/rule-utils": "npm:0.58.3"
+  checksum: 30d8fcad008ec676664104b564d07c5eab14e3ca6bc5e9e7031e1e8d32a44cc9c6e1fb53738f1e358a6eca9043237d2055e055484ed67d35b9e539f77629780a
   languageName: node
   linkType: hard
 
-"@unocss/preset-wind@npm:^0.58.2":
-  version: 0.58.2
-  resolution: "@unocss/preset-wind@npm:0.58.2"
+"@unocss/preset-wind@npm:^0.58.3":
+  version: 0.58.3
+  resolution: "@unocss/preset-wind@npm:0.58.3"
   dependencies:
-    "@unocss/core": "npm:0.58.2"
-    "@unocss/preset-mini": "npm:0.58.2"
-    "@unocss/rule-utils": "npm:0.58.2"
-  checksum: e1e6025e6b7b1a5b1deb7e0c01fdfab25e4689579345323c372e97937a4348788cf7e1af063972745f9980ebfbc8023b7e914b5f80179a969304a2798eee5908
+    "@unocss/core": "npm:0.58.3"
+    "@unocss/preset-mini": "npm:0.58.3"
+    "@unocss/rule-utils": "npm:0.58.3"
+  checksum: fc0c17c689b0c62b8fe3aa11eb6485695fe1d5041d9e4d0a1976f19585d3c54e43f7785127c4911b7b1ae6be5b91b952e9bd20975aee1ae799c870b5b821a5bd
   languageName: node
   linkType: hard
 
@@ -1032,6 +1039,16 @@ __metadata:
     "@unocss/core": "npm:^0.58.2"
     magic-string: "npm:^0.30.5"
   checksum: 1f23e3fe40fab1a499d896574baef3ebb558db135b4cca957a499a5df490163c55c257476f38f5f948865f1483e556e7e03bf091004520576c0f14a676431a2a
+  languageName: node
+  linkType: hard
+
+"@unocss/rule-utils@npm:0.58.3":
+  version: 0.58.3
+  resolution: "@unocss/rule-utils@npm:0.58.3"
+  dependencies:
+    "@unocss/core": "npm:^0.58.3"
+    magic-string: "npm:^0.30.5"
+  checksum: 00d583836bba6ffe59886a52e9d1a2380e87361ab08a10657e7e376b1913e441375493cb89c022d180747615ca933224efe3b1003c6f5f3db5696b29f21028d9
   languageName: node
   linkType: hard
 
@@ -1222,7 +1239,7 @@ __metadata:
     "@nanostores/solid": "npm:^0.4.2"
     "@solidjs/router": "npm:^0.10.5"
     "@unocss/preset-attributify": "npm:^0.58.2"
-    "@unocss/preset-wind": "npm:^0.58.2"
+    "@unocss/preset-wind": "npm:^0.58.3"
     "@unocss/reset": "npm:^0.58.2"
     "@unocss/vite": "npm:^0.58.2"
     lanyard-wrapper: "npm:^2.0.1"
