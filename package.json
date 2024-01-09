@@ -13,7 +13,7 @@
   "license": "LGPL-3.0-or-later",
   "devDependencies": {
     "@nanostores/solid": "^0.4.2",
-    "@solidjs/router": "^0.10.5",
+    "@solidjs/router": "^0.10.7",
     "@unocss/preset-attributify": "^0.58.2",
     "@unocss/preset-wind": "^0.58.2",
     "@unocss/reset": "^0.58.2",

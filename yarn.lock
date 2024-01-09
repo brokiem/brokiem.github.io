@@ -892,12 +892,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@solidjs/router@npm:^0.10.5":
-  version: 0.10.5
-  resolution: "@solidjs/router@npm:0.10.5"
+"@solidjs/router@npm:^0.10.7":
+  version: 0.10.7
+  resolution: "@solidjs/router@npm:0.10.7"
   peerDependencies:
     solid-js: ^1.8.6
-  checksum: 059e78fbab0eb567815c8b2252396e85db0e3102ce3212babc0e7ed94021682072c8bc583801dfc285127d7972cf627001af4049221118b6bd1df2ca8242dafd
+  checksum: ec830a961630656feeaaab5cb4698f26cbfaa619f75f76b53a3b2608e3987e5d17c1d0b5f1d22a23661f0caee3e078be803ef4155125d02b58253c9241440361
   languageName: node
   linkType: hard
 
@@ -1220,7 +1220,7 @@ __metadata:
   resolution: "brokiem.github.io@workspace:."
   dependencies:
     "@nanostores/solid": "npm:^0.4.2"
-    "@solidjs/router": "npm:^0.10.5"
+    "@solidjs/router": "npm:^0.10.7"
     "@unocss/preset-attributify": "npm:^0.58.2"
     "@unocss/preset-wind": "npm:^0.58.2"
     "@unocss/reset": "npm:^0.58.2"
