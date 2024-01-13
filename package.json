@@ -13,20 +13,20 @@
   "license": "LGPL-3.0-or-later",
   "devDependencies": {
     "@nanostores/solid": "^0.4.2",
-    "@solidjs/router": "^0.10.5",
-    "@unocss/preset-attributify": "^0.58.2",
-    "@unocss/preset-wind": "^0.58.2",
-    "@unocss/reset": "^0.58.2",
-    "@unocss/vite": "^0.58.2",
+    "@solidjs/router": "^0.10.9",
+    "@unocss/preset-attributify": "^0.58.3",
+    "@unocss/preset-wind": "^0.58.3",
+    "@unocss/reset": "^0.58.3",
+    "@unocss/vite": "^0.58.3",
     "lanyard-wrapper": "^2.0.1",
     "nanostores": "^0.9.5",
     "solid-transition-group": "^0.2.3",
     "typescript": "^5.3.3",
-    "vite": "^5.0.10",
+    "vite": "^5.0.11",
     "vite-plugin-solid": "^2.8.0"
   },
   "dependencies": {
-    "solid-js": "^1.8.7"
+    "solid-js": "^1.8.11"
   },
   "packageManager": "yarn@4.0.1"
 }
