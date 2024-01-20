@@ -72,18 +72,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/generator@npm:^7.21.1":
-  version: 7.23.0
-  resolution: "@babel/generator@npm:7.23.0"
-  dependencies:
-    "@babel/types": "npm:^7.23.0"
-    "@jridgewell/gen-mapping": "npm:^0.3.2"
-    "@jridgewell/trace-mapping": "npm:^0.3.17"
-    jsesc: "npm:^2.5.1"
-  checksum: b7d8727c574119b5ef06e5d5d0d8d939527d51537db4b08273caebb18f3f2b1d4517b874776085e161fd47d28f26b22c08e7f270b64f43b2afd4a60c5936d6cd
-  languageName: node
-  linkType: hard
-
 "@babel/generator@npm:^7.23.6":
   version: 7.23.6
   resolution: "@babel/generator@npm:7.23.6"
@@ -181,7 +169,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/helper-module-imports@npm:^7.18.6, @babel/helper-module-imports@npm:^7.22.15":
+"@babel/helper-module-imports@npm:^7.22.15":
   version: 7.22.15
   resolution: "@babel/helper-module-imports@npm:7.22.15"
   dependencies:
@@ -451,7 +439,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/types@npm:^7.0.0, @babel/types@npm:^7.18.6, @babel/types@npm:^7.20.7, @babel/types@npm:^7.21.2, @babel/types@npm:^7.22.15, @babel/types@npm:^7.22.5, @babel/types@npm:^7.23.0, @babel/types@npm:^7.8.3":
+"@babel/types@npm:^7.0.0, @babel/types@npm:^7.18.6, @babel/types@npm:^7.20.7, @babel/types@npm:^7.22.15, @babel/types@npm:^7.22.5, @babel/types@npm:^7.23.0, @babel/types@npm:^7.8.3":
   version: 7.23.0
   resolution: "@babel/types@npm:7.23.0"
   dependencies:
@@ -1231,7 +1219,7 @@ __metadata:
     solid-transition-group: "npm:^0.2.3"
     typescript: "npm:^5.3.3"
     vite: "npm:^5.0.11"
-    vite-plugin-solid: "npm:^2.8.0"
+    vite-plugin-solid: "npm:^2.8.2"
   languageName: unknown
   linkType: soft
 
@@ -2476,16 +2464,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"solid-refresh@npm:^0.5.3":
-  version: 0.5.3
-  resolution: "solid-refresh@npm:0.5.3"
+"solid-refresh@npm:^0.6.3":
+  version: 0.6.3
+  resolution: "solid-refresh@npm:0.6.3"
   dependencies:
-    "@babel/generator": "npm:^7.21.1"
-    "@babel/helper-module-imports": "npm:^7.18.6"
-    "@babel/types": "npm:^7.21.2"
+    "@babel/generator": "npm:^7.23.6"
+    "@babel/helper-module-imports": "npm:^7.22.15"
+    "@babel/types": "npm:^7.23.6"
   peerDependencies:
     solid-js: ^1.3
-  checksum: a4115284f9959d0f811036b4d5735805c6b74cf7e31da4f4fefb8123da2b9bf82a10f64f929ae839ebfd77b5f6183652358be8b6b0298ed2001323410d0a34ba
+  checksum: 04f474704fe60e28835ece852bb6a5ce60106d1d360c2d9ed0f5740751b60672705591b5ae57a35202fd6c13c8cf4eb0e17897e954317e204c2e2bda46b8bb17
   languageName: node
   linkType: hard
 
@@ -2681,21 +2669,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite-plugin-solid@npm:^2.8.0":
-  version: 2.8.0
-  resolution: "vite-plugin-solid@npm:2.8.0"
+"vite-plugin-solid@npm:^2.8.2":
+  version: 2.8.2
+  resolution: "vite-plugin-solid@npm:2.8.2"
   dependencies:
     "@babel/core": "npm:^7.23.3"
     "@babel/preset-typescript": "npm:^7.23.3"
     "@types/babel__core": "npm:^7.20.4"
     babel-preset-solid: "npm:^1.8.4"
     merge-anything: "npm:^5.1.7"
-    solid-refresh: "npm:^0.5.3"
+    solid-refresh: "npm:^0.6.3"
     vitefu: "npm:^0.2.5"
   peerDependencies:
     solid-js: ^1.7.2
     vite: ^3.0.0 || ^4.0.0 || ^5.0.0
-  checksum: aaa5af387e75ad3d7aa79b1a9e9fc3b68843adbc6fa7def74ebb16d0535084d325bc738927e31eb57e184af21b7c1f8febcf8516b61e7433d098528d090a50f9
+  checksum: 2c6ec50d9d69075aa8e0d09e80c5f5c9512faa0e3cc69b96ce1ac5a7939743d24cd7c3fdac98e9b0c8f1c8d08a80719fc126210536373c148d6e41f9e6082f5c
   languageName: node
   linkType: hard
 
