@@ -17,7 +17,7 @@
     "@unocss/preset-attributify": "^0.58.5",
     "@unocss/preset-wind": "^0.58.5",
     "@unocss/reset": "^0.58.3",
-    "@unocss/vite": "^0.58.3",
+    "@unocss/vite": "^0.58.5",
     "lanyard-wrapper": "^2.0.1",
     "nanostores": "^0.9.5",
     "solid-transition-group": "^0.2.3",
