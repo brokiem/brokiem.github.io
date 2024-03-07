@@ -867,10 +867,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@unocss/reset@npm:^0.58.3":
-  version: 0.58.3
-  resolution: "@unocss/reset@npm:0.58.3"
-  checksum: 556f17121db6affa2b7b8d2430dc13bd3be23d6127959ef60c8d43ce2959160223c750a6d44eaf80bc87823295f717d934ddb9ffc412900b9d8f3b487fa8551a
+"@unocss/reset@npm:^0.58.5":
+  version: 0.58.5
+  resolution: "@unocss/reset@npm:0.58.5"
+  checksum: 9549cdb5461f6cec1cb3c98e300b2895d90b690024571c3aaa1358c2605096c123e70b8c9461b15461f9ce8146745241059395714d6c6508df166bcdbbefcb10
   languageName: node
   linkType: hard
 
@@ -1072,7 +1072,7 @@ __metadata:
     "@solidjs/router": "npm:^0.12.5"
     "@unocss/preset-attributify": "npm:^0.58.5"
     "@unocss/preset-wind": "npm:^0.58.5"
-    "@unocss/reset": "npm:^0.58.3"
+    "@unocss/reset": "npm:^0.58.5"
     "@unocss/vite": "npm:^0.58.5"
     lanyard-wrapper: "npm:^2.0.1"
     nanostores: "npm:^0.10.0"
