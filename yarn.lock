@@ -1075,7 +1075,7 @@ __metadata:
     "@unocss/reset": "npm:^0.58.3"
     "@unocss/vite": "npm:^0.58.5"
     lanyard-wrapper: "npm:^2.0.1"
-    nanostores: "npm:^0.9.5"
+    nanostores: "npm:^0.10.0"
     solid-js: "npm:^1.8.15"
     solid-transition-group: "npm:^0.2.3"
     typescript: "npm:^5.3.3"
@@ -1972,10 +1972,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nanostores@npm:^0.9.5":
-  version: 0.9.5
-  resolution: "nanostores@npm:0.9.5"
-  checksum: 5d6a33647428bd3adcd4ddb2745a01420eae3cc1c3c49e48c307b078152603a26ac78f25d30d17f3c4e51b43ee18e2fcd5b80a8c704336366cbcc86a5d5210b5
+"nanostores@npm:^0.10.0":
+  version: 0.10.0
+  resolution: "nanostores@npm:0.10.0"
+  checksum: 3d8fccb771dda7312340c4aae08373dd30e817965c9b9a436939933d2116b93cd936837ca475b7706911c018dc982cd94e1018c966fde88494d3857b0f08ed6a
   languageName: node
   linkType: hard
 
