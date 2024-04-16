@@ -815,12 +815,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@unocss/extractor-arbitrary-variants@npm:0.58.5":
-  version: 0.58.5
-  resolution: "@unocss/extractor-arbitrary-variants@npm:0.58.5"
+"@unocss/core@npm:0.59.3, @unocss/core@npm:^0.59.3":
+  version: 0.59.3
+  resolution: "@unocss/core@npm:0.59.3"
+  checksum: 93d6dfa480d6129df5f6dd7edb0f3a75d9bd52d1861921584b436fd3731ec651f8975684e9550405e182c3fa8002324fdc66160fc61a1a8badf6e69ecfd67ca8
+  languageName: node
+  linkType: hard
+
+"@unocss/extractor-arbitrary-variants@npm:0.59.3":
+  version: 0.59.3
+  resolution: "@unocss/extractor-arbitrary-variants@npm:0.59.3"
   dependencies:
-    "@unocss/core": "npm:0.58.5"
-  checksum: 956a28f2e429b5cd1ba4b3db091d9d877b75eaec745dba4d4ac039d0f369e7de86932781b62ffef4cf2ecd669ac35fe9728f18015af5572989ddf4a04281fb93
+    "@unocss/core": "npm:0.59.3"
+  checksum: d32f00bb4a1e37d94e6f1fbac2b30f240aac4f7428b44b06633411388ac1b91e885ccd8012aa0f4f03cb76f4dedd4c9a3669f42f07a73f15228e6567d76680df
   languageName: node
   linkType: hard
 
@@ -845,25 +852,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@unocss/preset-mini@npm:0.58.5":
-  version: 0.58.5
-  resolution: "@unocss/preset-mini@npm:0.58.5"
+"@unocss/preset-mini@npm:0.59.3":
+  version: 0.59.3
+  resolution: "@unocss/preset-mini@npm:0.59.3"
   dependencies:
-    "@unocss/core": "npm:0.58.5"
-    "@unocss/extractor-arbitrary-variants": "npm:0.58.5"
-    "@unocss/rule-utils": "npm:0.58.5"
-  checksum: e58c6ba8bc52d28810a2e01cff5591d97beb1458f03b0932b5e585de0e3e27186f4aa3fd7dcf3b104e630010babf877e19e2abd8dcb164799253394ea63e6535
+    "@unocss/core": "npm:0.59.3"
+    "@unocss/extractor-arbitrary-variants": "npm:0.59.3"
+    "@unocss/rule-utils": "npm:0.59.3"
+  checksum: ffcef3bef541168c6003550be5dd28c4c32bc18aa3064fe53dc711d9d847455685347c3a9389b94e3eba9958137c81e4aa4321fea81bd433d72104b26d80ef3d
   languageName: node
   linkType: hard
 
-"@unocss/preset-wind@npm:^0.58.5":
-  version: 0.58.5
-  resolution: "@unocss/preset-wind@npm:0.58.5"
+"@unocss/preset-wind@npm:^0.59.3":
+  version: 0.59.3
+  resolution: "@unocss/preset-wind@npm:0.59.3"
   dependencies:
-    "@unocss/core": "npm:0.58.5"
-    "@unocss/preset-mini": "npm:0.58.5"
-    "@unocss/rule-utils": "npm:0.58.5"
-  checksum: bd8a7e154a47a28bf12729a080fdf3e9a3ce9874168820c30ebd77a75a6f1e6e048fb3c6aac5a5fc3c94b0001260202881c0f7f1cb3fd200e4b27ea50241624d
+    "@unocss/core": "npm:0.59.3"
+    "@unocss/preset-mini": "npm:0.59.3"
+    "@unocss/rule-utils": "npm:0.59.3"
+  checksum: 324ab0104a4f5b0538299fad0a9c7e0b5b1f40986981955931f72fe1a144a3655503f552f3389aff79990b2b7d072755f66de9f7bafbe112df2eb66d7438d0a0
   languageName: node
   linkType: hard
 
@@ -881,6 +888,16 @@ __metadata:
     "@unocss/core": "npm:^0.58.5"
     magic-string: "npm:^0.30.6"
   checksum: dc3d96cbdd306d225fd9124d365845e7025c7fe56ae45c27bd3f8249dee6cd96e6eed55b7bdcf1c54118863644e1b716daf92648871810b73d7c3bed3b72e1e7
+  languageName: node
+  linkType: hard
+
+"@unocss/rule-utils@npm:0.59.3":
+  version: 0.59.3
+  resolution: "@unocss/rule-utils@npm:0.59.3"
+  dependencies:
+    "@unocss/core": "npm:^0.59.3"
+    magic-string: "npm:^0.30.9"
+  checksum: 4b4f36f37a65c9003b21b389090f1240ea64ff0d54a7b7c7074b4b3f5481f7058e027a3aebfdc1542c8babd9c49f9242bb6bbc83b104e7a5ff192b6d85384292
   languageName: node
   linkType: hard
 
@@ -1071,7 +1088,7 @@ __metadata:
     "@nanostores/solid": "npm:^0.4.2"
     "@solidjs/router": "npm:^0.13.0"
     "@unocss/preset-attributify": "npm:^0.58.5"
-    "@unocss/preset-wind": "npm:^0.58.5"
+    "@unocss/preset-wind": "npm:^0.59.3"
     "@unocss/reset": "npm:^0.58.5"
     "@unocss/vite": "npm:^0.58.5"
     lanyard-wrapper: "npm:^2.0.1"
@@ -1780,6 +1797,15 @@ __metadata:
   dependencies:
     "@jridgewell/sourcemap-codec": "npm:^1.4.15"
   checksum: 51a1f06f678c082aceddfb5943de9b6bdb88f2ea1385a1c2adf116deb73dfcfa50df6c222901d691b529455222d4d68d0b28be5689ac6f69b3baa3462861f922
+  languageName: node
+  linkType: hard
+
+"magic-string@npm:^0.30.9":
+  version: 0.30.9
+  resolution: "magic-string@npm:0.30.9"
+  dependencies:
+    "@jridgewell/sourcemap-codec": "npm:^1.4.15"
+  checksum: edbeea35b4f90b58815d8b13899fa412b5bc1e81cae14fe6d24d5c383c5f04331fce2c5a75bfb7926203ab6fc8c71290cdab56703a5b82432d8a1e144d6042e1
   languageName: node
   linkType: hard
 
