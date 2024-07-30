@@ -57,7 +57,7 @@ const Header = () => {
         flex={"~"}
         justify={"between"}
         rounded={"3xl"}
-        bg={"#2f2525"}
+        bg={"#271d1a"}
         w={"full"}
       >
         <div flex={"~"} items={"center"} p={"y-5"} m={"x-auto"} gap={"4"}>
@@ -114,7 +114,7 @@ const Header = () => {
 const AboutMe = () => {
   return (
     <>
-      <div bg={"#2f2525"} rounded={"3xl"} p={"5"}>
+      <div bg={"#271d1a"} rounded={"3xl"} p={"5"}>
         <h1 class={"leading-none"} font={"extrabold"} text={"3xl"} m={"0"}>Hello there!</h1>
         <p class={"leading-normal"} m={"0 t-2"}>I'm a programmer who loves to code and learn new things. I'm currently
           learning web development and I'm also interested in game development. I'm also a huge fan of anime and
@@ -131,7 +131,7 @@ const LatestProject = () => {
 
   return (
     <>
-      <div flex={"~ col"} justify={"center"} bg={"#2f2525"} rounded={"3xl"} p={"5"} gap={"3"}>
+      <div flex={"~ col"} justify={"center"} bg={"#271d1a"} rounded={"3xl"} p={"5"} gap={"3"}>
         <h1 leading={"none"} font={"extrabold"} text={"2xl"} m={"0 r-4"}>Latest Project</h1>
 
         <Transition mode="outin" name="slide-fade">

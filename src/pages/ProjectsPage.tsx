@@ -30,7 +30,7 @@ const ProjectsPage = () => {
 const ProjectCard = ({project}: { project: Project }) => {
   return (
     <>
-      <div flex={"~ col"} bg={"#2f2525"} rounded={"3xl"} p={"b-3"}>
+      <div flex={"~ col"} bg={"#271d1a"} rounded={"3xl"} p={"b-3"}>
         <div flex={"~"} justify={"between"} p={"5 b-0"}>
           <div class={"leading-normal"} flex={"~ col"} justify={"between"}>
             <h1 font={"extrabold"} text={"2xl"} m={"0"}>{project.name}</h1>
@@ -59,7 +59,7 @@ const ProjectCardSkeleton = () => {
       flex={"~"}
       animate={"pulse"}
       h={"14.4rem"}
-      bg={"#2F2525"}
+      bg={"#271d1a"}
       rounded={"3xl"}
     />
   )
@@ -70,8 +70,8 @@ export function ViewButton({text, url}: { text: string, url: string }) {
     <>
       <a
         href={url}
-        class={"text-[#4A0F13] hover:bg-[#c5b6b6]"}
-        bg={"#fce9e9"}
+        class={"text-[#4A0F13] hover:bg-[#ffb59c]"}
+        bg={"#ebc2b4"}
         flex={"~ initial"}
         text={"center sm"}
         align={"middle"}
@@ -94,8 +94,8 @@ export function GitHubButton({url}: { url: string }) {
     <>
       <a
         href={url}
-        class={"text-[#4A0F13] hover:bg-[#c5b6b6]"}
-        bg={"#fce9e9"}
+        class={"text-[#4A0F13] hover:bg-[#ffb59c]"}
+        bg={"#ebc2b4"}
         flex={"~ initial"}
         text={"center sm"}
         align={"middle"}
@@ -118,8 +118,8 @@ export function ShareButton({url}: { url: string }) {
     <>
       <button
         onClick={() => navigator.clipboard.writeText(url)}
-        class={"text-[#4A0F13] hover:bg-[#c5b6b6] hover:cursor-pointer"}
-        bg={"#fce9e9"}
+        class={"text-[#4A0F13] hover:bg-[#ffb59c]"}
+        bg={"#ebc2b4"}
         flex={"~ initial"}
         text={"center sm"}
         align={"middle"}

@@ -3,8 +3,8 @@ export function ButtonLink({text, url}: { text: string, url: string }) {
     <>
       <a
         href={url}
-        class={"text-[#4A0F13] hover:bg-[#c5b6b6]"}
-        bg={"#fce9e9"}
+        class={"text-[#4A0F13] hover:bg-[#ffb59c]"}
+        bg={"#ebc2b4"}
         flex={"auto"}
         text={"center sm"}
         align={"middle"}
