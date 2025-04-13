@@ -38,8 +38,6 @@ const MainPage = () => {
             <div flex={"~ row"} items={"center"} justify={"center"} w={"full"} gap={"5"}>
               <ButtonLink text={"Projects"} url={"/#/projects"}/>
               <ButtonLink text={"GitHub"} url={"https://github.com/brokiem"}/>
-              <ButtonLink text={"Twitter"} url={"https://x.com/brokiemydug"}/>
-              <ButtonLink text={"Donate"} url={"https://paypal.me/brokiem"}/>
             </div>
           </div>
         </div>
@@ -116,10 +114,7 @@ const AboutMe = () => {
     <>
       <div bg={"#271d1a"} rounded={"3xl"} p={"5"}>
         <h1 class={"leading-none"} font={"extrabold"} text={"3xl"} m={"0"}>Hello there!</h1>
-        <p class={"leading-normal"} m={"0 t-2"}>I'm a programmer who loves to code and learn new things. I'm currently
-          learning web development and I'm also interested in game development. I'm also a huge fan of anime and
-          manga. <br/><br/> When I'm not coding, you can find me battling it out in VALORANT or Counter Strike,
-          exploring the world of Genshin Impact, tapping away in osu!, or building incredible structures in Minecraft.
+        <p class={"leading-normal"} m={"0 t-2"}>I'm a developer from Indonesia who loves to code and learn new stuff. Right now I'm mostly into web development, but I also enjoy messing around with Flutter to make desktop apps. Feel free to check my collection of projects! <br/><br/> When I'm not staring at code, I'll probably be sweating it out in VALORANT, exploring the world of Genshin Impact, failing miserably at osu!, or just building random stuff in Minecraft.
         </p>
       </div>
     </>
