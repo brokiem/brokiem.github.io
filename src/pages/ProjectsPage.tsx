@@ -18,7 +18,7 @@ const ProjectsPage = () => {
 
         <div flex={"~ col"} gap={"5"} m={"t-10 b-20"}>
           <For each={projects()}
-               fallback={<Index each={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}>{() => <ProjectCardSkeleton/>}</Index>}>
+               fallback={<Index each={[...Array(23).keys()]}>{() => <ProjectCardSkeleton/>}</Index>}>
             {(project) => <ProjectCard project={project}/>}
           </For>
         </div>
