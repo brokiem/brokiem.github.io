@@ -86,7 +86,11 @@ const Header = () => {
                         </span>;
                       case "NoActivity":
                         return <span>
-                          Not playing anything
+                          Not playing anything ☕
+                        </span>;
+                      case "Offline":
+                        return <span>
+                          Touching some grass 🌾...
                         </span>;
                       default:
                         return <span>
@@ -114,7 +118,7 @@ const AboutMe = () => {
     <>
       <div bg={"#271d1a"} rounded={"3xl"} p={"5"}>
         <h1 class={"leading-none"} font={"extrabold"} text={"3xl"} m={"0"}>Hello there!</h1>
-        <p class={"leading-normal"} m={"0 t-2"}>I'm a developer from Indonesia who loves to code and learn new stuff. Right now I'm mostly into web development, but I also enjoy messing around with Flutter to make desktop apps. Feel free to check my collection of projects! <br/><br/> When I'm not staring at code, I'll probably be sweating it out in VALORANT, exploring the world of Genshin Impact, failing miserably at osu!, or just building random stuff in Minecraft.
+        <p class={"leading-normal"} m={"0 t-2"}>I'm a developer who loves to code and learn new stuff. Right now I'm mostly into web development, but I also enjoy messing around with Flutter to make apps. Feel free to check my projects! <br/><br/> When I'm not staring at code, I'll probably be sweating it out in VALORANT, failing miserably at osu!, or just touching some grass.
         </p>
       </div>
     </>

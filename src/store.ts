@@ -6,6 +6,7 @@ export const $data = atom<lanyard.Data>();
 
 export const $status = computed($data, (data): string | null => {
   if (!data) return null;
+  if (data?.discord_status === "offline") return "Offline";
   if (data?.activities?.length > 0) return data?.activities[0].name;
   return "NoActivity";
 });
