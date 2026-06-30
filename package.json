@@ -28,5 +28,5 @@
   "dependencies": {
     "solid-js": "^1.9.5"
   },
-  "packageManager": "yarn@4.0.1"
+  "packageManager": "pnpm@11.9.0"
 }
