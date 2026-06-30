@@ -14,7 +14,7 @@
   "devDependencies": {
     "@nanostores/solid": "^0.4.2",
     "@solidjs/router": "^0.14.10",
-    "@unocss/preset-attributify": "^0.61.9",
+    "@unocss/preset-attributify": "^66.7.4",
     "@unocss/preset-wind": "^0.61.9",
     "@unocss/reset": "^0.61.9",
     "@unocss/vite": "^0.61.9",
