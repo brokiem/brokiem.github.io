@@ -30,7 +30,7 @@ const ProjectsPage = () => {
 const ProjectCard = ({project}: { project: Project }) => {
   return (
     <>
-      <div flex={"~ col"} bg={"#271d1a"} rounded={"3xl"} p={"b-3"}>
+      <div class={"project-card"} flex={"~ col"} bg={"#271d1a"} rounded={"3xl"} p={"b-3"}>
         <div flex={"~"} justify={"between"} p={"5 b-0"}>
           <div class={"leading-normal"} flex={"~ col"} justify={"between"}>
             <h1 font={"extrabold"} text={"2xl"} m={"0"}>{project.name}</h1>
@@ -56,6 +56,7 @@ const ProjectCard = ({project}: { project: Project }) => {
 const ProjectCardSkeleton = () => {
   return (
     <div
+      class={"project-card"}
       flex={"~"}
       animate={"pulse"}
       h={"14.4rem"}
@@ -77,8 +78,8 @@ export function ViewButton({text, url}: { text: string, url: string }) {
         align={"middle"}
         rounded={"full"}
         font={"semibold"}
-        transition={"all"}
-        duration={"300"}
+        transition={"colors"}
+        duration={"200"}
         p={"x-10 y-2.5"}
         leading={"none"}
         no-underline
@@ -100,8 +101,8 @@ export function GitHubButton({url}: { url: string }) {
         text={"center sm"}
         align={"middle"}
         rounded={"full"}
-        transition={"all"}
-        duration={"300"}
+        transition={"colors"}
+        duration={"200"}
         p={"1.5"}
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -125,8 +126,8 @@ export function ShareButton({url}: { url: string }) {
         align={"middle"}
         rounded={"full"}
         font={"semibold"}
-        transition={"all"}
-        duration={"300"}
+        transition={"colors"}
+        duration={"200"}
         p={"1.5"}
         no-underline
       >

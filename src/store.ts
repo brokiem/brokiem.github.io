@@ -4,6 +4,16 @@ import * as lanyard from "lanyard-wrapper";
 export const $isLoading = atom(true);
 export const $data = atom<lanyard.Data>();
 
+function parseKV<T>(value: string | undefined, fallback: T): T {
+  if (!value) return fallback;
+
+  try {
+    return JSON.parse(value) || fallback;
+  } catch {
+    return fallback;
+  }
+}
+
 export const $status = computed($data, (data): string | null => {
   if (!data) return null;
   if (data?.discord_status === "offline") return "Offline";
@@ -12,17 +22,11 @@ export const $status = computed($data, (data): string | null => {
 });
 
 export const $projects = computed($data, (data): Project[] => {
-  const projects = JSON.parse(data?.kv?.projects || `""`);
-  if (!projects) return [];
-
-  return projects;
+  return parseKV<Project[]>(data?.kv?.projects, []);
 });
 
 export const $latestProject = computed($data, (data): Project | null => {
-  const project = JSON.parse(data?.kv?.latest_project || `""`);
-  if (!project) return null;
-
-  return project;
+  return parseKV<Project | null>(data?.kv?.latest_project, null);
 });
 
 export type Project = {

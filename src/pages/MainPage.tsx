@@ -5,27 +5,9 @@ import {Show} from "solid-js";
 import {Transition} from "solid-transition-group"
 
 const MainPage = () => {
-  function handleWindowResize() {
-    const containerEl = document.getElementById("container");
-
-    if (containerEl === null) return;
-
-    // Center the container if the page is not scrollable
-    if (document.documentElement.scrollHeight > window.innerHeight) {
-      containerEl.classList.remove("justify-center", "items-center", "h-screen");
-      containerEl.classList.add("mt-12");
-    } else {
-      containerEl.classList.remove("mt-12");
-      containerEl.classList.add("justify-center", "items-center", "h-screen");
-    }
-  }
-
-  window.addEventListener("resize", handleWindowResize);
-  handleWindowResize();
-
   return (
     <>
-      <div id="container" class={"max-w-4xl items-center justify-center h-screen"} flex={"~"} m={"x-auto"}>
+      <div id="container" class={"max-w-4xl min-h-screen items-center justify-center py-12"} flex={"~"} m={"x-auto"}>
         <div class={"slide-up"}>
           <div class={"overflow-hidden"} flex={"~ col"} content={"center"} gap={"5"} p={"x-4"}>
             <Header/>
@@ -36,7 +18,7 @@ const MainPage = () => {
             </div>
 
             <div flex={"~ row"} items={"center"} justify={"center"} w={"full"} gap={"5"}>
-              <ButtonLink text={"Projects"} url={"/#/projects"}/>
+              <ButtonLink text={"Projects"} url={"/projects"}/>
               <ButtonLink text={"GitHub"} url={"https://github.com/brokiem"}/>
             </div>
           </div>

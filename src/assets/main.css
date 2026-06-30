@@ -13,16 +13,18 @@
 }
 
 .slide-up {
-  animation: slide-up 500ms cubic-bezier(0.2, 0, 0, 1) 1 forwards;
+  animation: slide-up 360ms cubic-bezier(0.2, 0, 0, 1) 1 both;
+  will-change: opacity, transform;
 }
 
 @keyframes slide-up {
   0% {
     opacity: 0;
-    transform: translateY(1.1rem);
+    transform: translate3d(0, 0.75rem, 0);
   }
   100% {
     opacity: 1;
+    transform: translate3d(0, 0, 0);
   }
 }
 
@@ -57,17 +59,36 @@
 }
 
 .slide-fade-enter-active {
-  transition: all 0.3s ease-out;
+  transition: opacity 180ms ease-out, transform 180ms ease-out;
+  will-change: opacity, transform;
 }
 
 .slide-fade-exit-active {
-  transition: all 0.2s cubic-bezier(1, 0.5, 0.8, 1);
+  transition: opacity 120ms cubic-bezier(1, 0.5, 0.8, 1), transform 120ms cubic-bezier(1, 0.5, 0.8, 1);
+  will-change: opacity, transform;
 }
 
 .slide-fade-enter,
 .slide-fade-exit-to {
-  transform: translateY(10px);
+  transform: translate3d(0, 0.5rem, 0);
   opacity: 0;
+}
+
+.project-card {
+  content-visibility: auto;
+  contain: layout paint style;
+  contain-intrinsic-size: auto 14.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 1ms !important;
+  }
 }
 
 /* Custom scrollbar */
