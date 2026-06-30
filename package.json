@@ -21,12 +21,12 @@
     "lanyard-wrapper": "^2.0.1",
     "nanostores": "^0.10.3",
     "solid-transition-group": "^0.2.3",
-    "typescript": "^5.8.3",
-    "vite": "^5.4.18",
-    "vite-plugin-solid": "^2.11.6"
+    "typescript": "^5.9.3",
+    "vite": "^5.4.21",
+    "vite-plugin-solid": "^2.11.12"
   },
   "dependencies": {
-    "solid-js": "^1.9.5"
+    "solid-js": "^1.9.13"
   },
   "packageManager": "pnpm@11.9.0"
 }
