@@ -100,7 +100,7 @@ const AboutMe = () => {
     <>
       <div bg={"#271d1a"} rounded={"3xl"} p={"5"}>
         <h1 class={"leading-none"} font={"extrabold"} text={"3xl"} m={"0"}>Hello there!</h1>
-        <p class={"leading-normal"} m={"0 t-2"}>I build random stuff on the web and keep picking up whatever looks fun to learn. Most of my time goes into web projects now, but I still mess around with Flutter when I feel like making an app. You can check out some of the things I've made here. <br/><br/> If I'm not coding, I'm probably queueing VALORANT, missing notes in osu!, or just touching some grass.
+        <p class={"leading-normal"} m={"0 t-2"}>I build random stuff on the web and keep picking up whatever looks fun to learn. Most of my time goes into web projects now, and I like turning small ideas into useful little tools. You can check out some of the things I've made here. <br/><br/> If I'm not coding, I'm probably queueing VALORANT, missing notes in osu!, or just touching some grass.
         </p>
       </div>
     </>
