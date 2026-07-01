@@ -74,6 +74,236 @@
   opacity: 0;
 }
 
+#status {
+  position: relative;
+  --md-tooltip-container: #302522;
+  --md-tooltip-on-container: #fff8f6;
+  --md-tooltip-on-container-variant: #d8c2ba;
+  --md-tooltip-outline: rgba(216, 194, 186, 0.18);
+}
+
+.status-popover-trigger {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  cursor: default;
+  outline: none;
+}
+
+.status-popover-trigger:focus-visible {
+  outline: 2px solid #ebc2b4;
+  outline-offset: 3px;
+}
+
+.activity-tooltip {
+  position: absolute;
+  top: calc(100% + 0.625rem);
+  left: 50%;
+  z-index: 20;
+  display: flex;
+  width: max-content;
+  min-width: 18rem;
+  max-width: min(22rem, calc(100vw - 2rem));
+  flex-direction: column;
+  gap: 0.125rem;
+  padding: 0.75rem 1rem;
+  color: var(--md-tooltip-on-container);
+  background: var(--md-tooltip-container);
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 2px rgba(10, 6, 5, 0.3), 0 2px 6px 2px rgba(10, 6, 5, 0.15);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate3d(-50%, -0.5rem, 0) scale(0.96);
+  transform-origin: top center;
+  transition: opacity 180ms cubic-bezier(0.05, 0.7, 0.1, 1), transform 220ms cubic-bezier(0.05, 0.7, 0.1, 1), visibility 180ms cubic-bezier(0.05, 0.7, 0.1, 1);
+  visibility: hidden;
+}
+
+.status-popover-trigger:hover .activity-tooltip,
+.status-popover-trigger:focus-visible .activity-tooltip,
+.status-popover-trigger:focus-within .activity-tooltip {
+  opacity: 1;
+  transform: translate3d(-50%, 0, 0) scale(1);
+  visibility: visible;
+}
+
+.activity-tooltip-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.activity-tooltip-copy {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.activity-tooltip-title {
+  color: var(--md-tooltip-on-container);
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.25rem;
+  margin-top: 0.125rem;
+}
+
+.activity-tooltip-line {
+  color: var(--md-tooltip-on-container-variant);
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1rem;
+}
+
+.activity-artwork {
+  position: relative;
+  display: grid;
+  width: 3.5rem;
+  height: 3.5rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 0.75rem;
+  background: rgba(235, 194, 180, 0.1);
+  overflow: visible;
+}
+
+.activity-artwork-image,
+.activity-artwork-empty {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 0.75rem;
+  object-fit: cover;
+}
+
+.activity-artwork-empty {
+  display: grid;
+  place-items: center;
+  background: rgba(235, 194, 180, 0.12);
+}
+
+.activity-artwork-empty svg {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.activity-app-icon {
+  position: absolute;
+  right: -0.25rem;
+  bottom: -0.25rem;
+  display: grid;
+  width: 1.5rem;
+  height: 1.5rem;
+  place-items: center;
+  overflow: hidden;
+  border: 2px solid var(--md-tooltip-container);
+  border-radius: 999px;
+  background: #1f1715;
+  box-shadow: 0 1px 2px rgba(10, 6, 5, 0.32);
+}
+
+.activity-app-icon img,
+.activity-app-icon svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  object-fit: cover;
+}
+
+.activity-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3125rem;
+  margin-top: 0.375rem;
+}
+
+.activity-progress-time {
+  color: var(--md-tooltip-on-container-variant);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  line-height: 1rem;
+}
+
+.activity-progress-track {
+  position: relative;
+  height: 0.25rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(216, 194, 186, 0.24);
+}
+
+.activity-progress-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: inherit;
+  background: #ebc2b4;
+  transition: width 450ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.activity-other-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  border-top: 1px solid var(--md-tooltip-outline);
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+}
+
+.activity-other-item {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  min-width: 0;
+}
+
+.activity-other-artwork,
+.activity-other-placeholder {
+  display: grid;
+  width: 1.5rem;
+  height: 1.5rem;
+  flex: 0 0 auto;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 0.375rem;
+  background: rgba(235, 194, 180, 0.1);
+}
+
+.activity-other-artwork img,
+.activity-other-artwork svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: cover;
+}
+
+.activity-other-copy {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+}
+
+.activity-other-title,
+.activity-other-detail {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.activity-other-title {
+  color: var(--md-tooltip-on-container);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1rem;
+}
+
+.activity-other-detail {
+  color: var(--md-tooltip-on-container-variant);
+  font-size: 0.6875rem;
+  font-weight: 400;
+  line-height: 1rem;
+}
+
 .project-card {
   content-visibility: auto;
   contain: layout paint style;
