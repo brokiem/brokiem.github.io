@@ -58,7 +58,7 @@ const Header = () => {
                   {i => {
                     switch (i.type) {
                       case "activity":
-                        return <span class={"status-popover-trigger"} tabIndex={0} aria-describedby={"activity-tooltip"}>
+                        return <span class={"status-popover-trigger group"} tabIndex={0} aria-describedby={"activity-tooltip"}>
                           {i.text}
                           <StatusIcon status={i}/>
                           <ActivityTooltip status={i}/>
