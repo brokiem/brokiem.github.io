@@ -19,7 +19,7 @@
     "nanostores": "^0.10.3",
     "solid-transition-group": "^0.2.3",
     "typescript": "^5.9.3",
-    "vite": "^5.4.21",
+    "vite": "^6.4.3",
     "vite-plugin-solid": "^2.11.12"
   },
   "dependencies": {
