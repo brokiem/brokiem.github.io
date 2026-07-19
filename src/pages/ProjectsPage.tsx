@@ -1,144 +1,285 @@
 import {useStore} from "@nanostores/solid";
-import {$projects, Project} from "../store";
-import {For, Index} from "solid-js";
+import {createSignal, For, Show} from "solid-js";
+import ProjectIllustration, {getProjectPaletteStyle} from "../components/ProjectIllustration";
+import {$isLoading, $projects, Project} from "../store";
+
+type ProjectGlowState = {
+  activeCard: HTMLElement | null;
+  cards: Array<{card: HTMLElement; bounds: DOMRect}>;
+  currentX: number;
+  currentY: number;
+  frame: number | null;
+  scrollX: number;
+  scrollY: number;
+  targetX: number;
+  targetY: number;
+};
+
+const projectGlowStates = new WeakMap<HTMLElement, ProjectGlowState>();
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+const measureProjectCards = (grid: HTMLElement) => (
+  Array.from(grid.querySelectorAll<HTMLElement>(".project-card"), (card) => ({
+    card,
+    bounds: card.getBoundingClientRect(),
+  }))
+);
+
+const refreshProjectGlowLayout = (grid: HTMLElement, state: ProjectGlowState) => {
+  if (state.scrollX === window.scrollX && state.scrollY === window.scrollY) return;
+  state.cards = measureProjectCards(grid);
+  state.scrollX = window.scrollX;
+  state.scrollY = window.scrollY;
+};
+
+const paintProjectGlow = (grid: HTMLElement, state: ProjectGlowState) => {
+  refreshProjectGlowLayout(grid, state);
+  state.cards.forEach(({card, bounds}) => {
+    const distanceX = Math.max(bounds.left - state.currentX, 0, state.currentX - bounds.right);
+    const distanceY = Math.max(bounds.top - state.currentY, 0, state.currentY - bounds.bottom);
+    const distance = Math.hypot(distanceX, distanceY);
+    const isActiveCard = card === state.activeCard;
+    const strength = isActiveCard ? 0.26 : Math.max(0, 1 - distance / 360) * 0.012;
+    const borderStrength = isActiveCard ? 0.42 : Math.max(0, 1 - distance / 420) * 0.28;
+
+    card.style.setProperty("--project-glow-x", `${state.currentX - bounds.left}px`);
+    card.style.setProperty("--project-glow-y", `${state.currentY - bounds.top}px`);
+    card.style.setProperty("--project-glow-strength", strength.toFixed(3));
+    card.style.setProperty("--project-glow-border-strength", borderStrength.toFixed(3));
+  });
+};
+
+const animateProjectGlow = (grid: HTMLElement, state: ProjectGlowState) => {
+  const deltaX = state.targetX - state.currentX;
+  const deltaY = state.targetY - state.currentY;
+
+  state.currentX += deltaX * 0.09;
+  state.currentY += deltaY * 0.09;
+  paintProjectGlow(grid, state);
+
+  if (Math.abs(deltaX) > 0.2 || Math.abs(deltaY) > 0.2) {
+    state.frame = requestAnimationFrame(() => animateProjectGlow(grid, state));
+  } else {
+    state.currentX = state.targetX;
+    state.currentY = state.targetY;
+    paintProjectGlow(grid, state);
+    state.frame = null;
+  }
+};
+
+const illuminateProjectCards = (event: PointerEvent) => {
+  if (event.pointerType === "touch") return;
+
+  const grid = event.currentTarget as HTMLElement;
+  const activeCard = event.target instanceof Element
+    ? event.target.closest<HTMLElement>(".project-card")
+    : null;
+  let state = projectGlowStates.get(grid);
+
+  if (!state) {
+    state = {
+      activeCard,
+      cards: measureProjectCards(grid),
+      currentX: event.clientX,
+      currentY: event.clientY,
+      frame: null,
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+      targetX: event.clientX,
+      targetY: event.clientY,
+    };
+    projectGlowStates.set(grid, state);
+    paintProjectGlow(grid, state);
+    return;
+  }
+
+  state.activeCard = activeCard;
+  state.targetX = event.clientX;
+  state.targetY = event.clientY;
+
+  if (reducedMotion.matches) {
+    state.currentX = state.targetX;
+    state.currentY = state.targetY;
+    paintProjectGlow(grid, state);
+    return;
+  }
+
+  if (state.frame === null) {
+    state.frame = requestAnimationFrame(() => animateProjectGlow(grid, state));
+  }
+};
+
+const resetProjectCards = (event: PointerEvent) => {
+  const grid = event.currentTarget as HTMLElement;
+  const state = projectGlowStates.get(grid);
+  if (state?.frame !== null && state?.frame !== undefined) cancelAnimationFrame(state.frame);
+  projectGlowStates.delete(grid);
+
+  const cards = state?.cards.map(({card}) => card) ?? grid.querySelectorAll<HTMLElement>(".project-card");
+  cards.forEach((card) => {
+    card.style.removeProperty("--project-glow-x");
+    card.style.removeProperty("--project-glow-y");
+    card.style.removeProperty("--project-glow-strength");
+    card.style.removeProperty("--project-glow-border-strength");
+  });
+};
 
 const ProjectsPage = () => {
   const projects = useStore($projects);
+  const isLoading = useStore($isLoading);
 
   return (
-    <>
-      <div
-        id={"container"}
-        class={"max-w-4xl slide-up"}
-        items={"center"}
-        m={"t-10 x-auto"}
-        p={"x-4"}>
-        <h1 class={"leading-none"} text={"center 4xl"} font={"bold"} m={"1"}>Projects</h1>
-        <p text={"center"} m={"0"}>A collection of my projects are shown here.</p>
-
-        <div flex={"~ col"} gap={"5"} m={"t-10 b-20"}>
-          <For each={projects()}
-               fallback={<Index each={[...Array(23).keys()]}>{() => <ProjectCardSkeleton/>}</Index>}>
-            {(project) => <ProjectCard project={project}/>}
-          </For>
+    <main class="projects-page">
+      <header class="projects-hero page-enter">
+        <div>
+          <span class="hero-kicker">Things that escaped the ideas folder</span>
+          <h1>A shelf of <span>side quests.</span></h1>
         </div>
-      </div>
-    </>
+        <p>
+          Tools, games, and experiments. Some are useful. Some taught me something. The best ones did both.
+        </p>
+      </header>
+
+      <Show
+        when={!isLoading()}
+        fallback={
+          <div class="projects-grid project-skeleton-grid" aria-label="Loading projects">
+            <For each={Array.from({length: 9})}>{() => <ProjectCardSkeleton/>}</For>
+          </div>
+        }
+      >
+        <Show
+          when={projects().length > 0}
+          fallback={
+            <div class="project-empty">
+              <span aria-hidden="true">⌁</span>
+              <h2>The shelf is being rearranged.</h2>
+              <p>Check back soon for the next little thing.</p>
+            </div>
+          }
+        >
+          <div
+            class="projects-grid page-enter-delayed"
+            onPointerMove={illuminateProjectCards}
+            onPointerLeave={resetProjectCards}
+          >
+            <For each={projects()}>
+              {(project, index) => <ProjectCard project={project} index={index()}/>}
+            </For>
+          </div>
+        </Show>
+      </Show>
+
+      <footer class="site-footer projects-footer">
+        <span>End of shelf. Start of another idea.</span>
+        <a href="https://github.com/brokiem" target="_blank" rel="noreferrer">More scraps on GitHub</a>
+      </footer>
+    </main>
   );
 };
 
-const ProjectCard = ({project}: { project: Project }) => {
-  return (
-    <>
-      <div class={"project-card"} flex={"~ col"} bg={"#271d1a"} rounded={"3xl"} p={"b-3"}>
-        <div flex={"~"} justify={"between"} p={"5 b-0"}>
-          <div class={"leading-normal"} flex={"~ col"} justify={"between"}>
-            <h1 font={"extrabold"} text={"2xl"} m={"0"}>{project.name}</h1>
-            <p text={"0.9rem gray-300"} m={"0 b-7"}>{project.stack}</p>
+const ProjectCard = ({project, index}: { project: Project; index: number }) => {
+  const [shareState, setShareState] = createSignal<"idle" | "copied">("idle");
+  const paletteStyle = getProjectPaletteStyle(project.name, index);
 
-            <p text={"base gray-300"} m={"0"}>{project.desc}</p>
+  const shareProject = async () => {
+    const url = project.url || project.github;
+    if (!url) return;
+
+    try {
+      if (navigator.share) {
+        await navigator.share({title: project.name, text: project.desc, url});
+      } else {
+        await navigator.clipboard.writeText(url);
+        setShareState("copied");
+        window.setTimeout(() => setShareState("idle"), 1800);
+      }
+    } catch (error) {
+      if (error instanceof DOMException && error.name === "AbortError") return;
+      await navigator.clipboard.writeText(url);
+      setShareState("copied");
+      window.setTimeout(() => setShareState("idle"), 1800);
+    }
+  };
+
+  const tags = () => project.stack
+    .split(/\s*[,/·|]\s*/)
+    .filter(Boolean)
+    .slice(0, 3);
+
+  const primaryTechnology = () => tags()[0];
+
+  return (
+    <article class="project-card" style={paletteStyle}>
+      <div class="project-media">
+        <ProjectIllustration name={project.name} variant={index}/>
+        <Show when={project.img} keyed>
+          {(imageUrl) => (
+            <img
+              src={imageUrl}
+              alt={`${project.name} preview`}
+              width="720"
+              height="440"
+              loading={index < 2 ? "eager" : "lazy"}
+              decoding="async"
+              onError={(event) => event.currentTarget.classList.add("is-broken")}
+            />
+          )}
+        </Show>
+        <Show when={primaryTechnology()} keyed>
+          {(technology) => <span class="project-tech-badge">{technology}</span>}
+        </Show>
+      </div>
+
+      <div class="project-content">
+        <div class="project-copy">
+          <div class="project-title-row">
+            <h2>{project.name}</h2>
           </div>
+          <p>{project.desc}</p>
         </div>
 
-        <div p={"5 b-3 t-5"} flex={"~"} justify={"between"}>
-          <ViewButton text={"View"} url={project.url}/>
+        <div class="project-actions">
+          <Show when={project.url}>
+            <a class="project-view-link" href={project.url} target="_blank" rel="noreferrer">
+              Open project
+            </a>
+          </Show>
 
-          <div flex={"~"} gap={"2"}>
-            <GitHubButton url={project.github}/>
-            <ShareButton url={project.github}/>
+          <div class="project-icon-actions">
+            <Show when={project.github}>
+              <a href={project.github} target="_blank" rel="noreferrer" aria-label={`${project.name} source code on GitHub`}>
+                <GitHubIcon/>
+              </a>
+            </Show>
+            <button type="button" onClick={shareProject} aria-label={`Share ${project.name}`}>
+              <Show when={shareState() === "copied"} fallback={<ShareIcon/>}>
+                <CheckIcon/>
+              </Show>
+            </button>
           </div>
         </div>
       </div>
-    </>
-  )
+    </article>
+  );
 };
 
-const ProjectCardSkeleton = () => {
-  return (
-    <div
-      class={"project-card"}
-      flex={"~"}
-      animate={"pulse"}
-      h={"14.4rem"}
-      bg={"#271d1a"}
-      rounded={"3xl"}
-    />
-  )
+const ProjectCardSkeleton = () => (
+  <div class="project-card project-card-skeleton">
+    <span/>
+  </div>
+);
+
+function GitHubIcon() {
+  return <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-3.16 19.49c.5.1.68-.22.68-.48v-1.87c-2.78.6-3.37-1.18-3.37-1.18-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.35 1.09 2.92.83.09-.65.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.6 9.6 0 0 1 12 6.82a9.5 9.5 0 0 1 2.5.34c1.91-1.29 2.75-1.02 2.75-1.02.54 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85V21c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>;
 }
 
-export function ViewButton({text, url}: { text: string, url: string }) {
-  return (
-    <>
-      <a
-        href={url}
-        class={"text-[#4A0F13] hover:bg-[#ffb59c]"}
-        bg={"#ebc2b4"}
-        flex={"~ initial"}
-        text={"center sm"}
-        align={"middle"}
-        rounded={"full"}
-        font={"semibold"}
-        transition={"colors"}
-        duration={"200"}
-        p={"x-10 y-2.5"}
-        leading={"none"}
-        no-underline
-      >
-        <span>{text}</span>
-      </a>
-    </>
-  )
+function ShareIcon() {
+  return <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18 22q-1.25 0-2.13-.88A2.9 2.9 0 0 1 15 19q0-.18.03-.36.02-.19.07-.34l-7.05-4.1q-.43.38-.95.59A2.8 2.8 0 0 1 6 15q-1.25 0-2.13-.88A2.9 2.9 0 0 1 3 12q0-1.25.87-2.13A2.9 2.9 0 0 1 6 9q.58 0 1.1.21.52.22.95.59l7.05-4.1a2.8 2.8 0 0 1-.1-.7q0-1.25.87-2.13A2.9 2.9 0 0 1 18 2q1.25 0 2.13.87A2.9 2.9 0 0 1 21 5q0 1.25-.87 2.13A2.9 2.9 0 0 1 18 8q-.58 0-1.1-.21a3.3 3.3 0 0 1-.95-.59L8.9 11.3q.05.15.08.34Q9 11.82 9 12t-.02.36q-.03.19-.08.34l7.05 4.1q.43-.38.95-.59A2.8 2.8 0 0 1 18 16q1.25 0 2.13.87A2.9 2.9 0 0 1 21 19q0 1.25-.87 2.12A2.9 2.9 0 0 1 18 22Z"/></svg>;
 }
 
-export function GitHubButton({url}: { url: string }) {
-  return (
-    <>
-      <a
-        href={url}
-        class={"text-[#4A0F13] hover:bg-[#ffb59c]"}
-        bg={"#ebc2b4"}
-        flex={"~ initial"}
-        text={"center sm"}
-        align={"middle"}
-        rounded={"full"}
-        transition={"colors"}
-        duration={"200"}
-        p={"1.5"}
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-          <path style="fill: #513030;"
-                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-        </svg>
-      </a>
-    </>
-  )
-}
-
-export function ShareButton({url}: { url: string }) {
-  return (
-    <>
-      <button
-        onClick={() => navigator.clipboard.writeText(url)}
-        class={"text-[#4A0F13] hover:bg-[#ffb59c]"}
-        bg={"#ebc2b4"}
-        flex={"~ initial"}
-        text={"center sm"}
-        align={"middle"}
-        rounded={"full"}
-        font={"semibold"}
-        transition={"colors"}
-        duration={"200"}
-        p={"1.5"}
-        no-underline
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
-          <path d="M0 0h24v24H0V0z" fill="none"/>
-          <path style="fill: #513030;"
-                d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92zM18 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM6 13c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm12 7.02c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/>
-        </svg>
-      </button>
-    </>
-  )
+function CheckIcon() {
+  return <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m9.2 17.2-4.4-4.4 1.4-1.4 3 3 8.6-8.6 1.4 1.4-10 10Z"/></svg>;
 }
 
 export default ProjectsPage;

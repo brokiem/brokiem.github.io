@@ -1,5 +1,5 @@
 import {atom, computed} from "nanostores";
-import * as lanyard from "lanyard-wrapper";
+import type * as lanyard from "lanyard-wrapper";
 
 export const $isLoading = atom(true);
 export const $data = atom<lanyard.Data>();
@@ -57,6 +57,19 @@ function getPrimaryActivity(activities: DiscordActivity[]) {
   return activities.find((activity) => activity.type !== CUSTOM_ACTIVITY_TYPE) ?? activities[0];
 }
 
+function isSpotifyActivity(activity: DiscordActivity) {
+  return activity.type === 2 && activity.name?.toLowerCase() === "spotify";
+}
+
+function isCurrentActivity(activity: DiscordActivity, data: lanyard.Data) {
+  if (!isSpotifyActivity(activity)) return true;
+  return data.listening_to_spotify && data.spotify !== null;
+}
+
+function getActivityKey(activity: DiscordActivity) {
+  return `${activity.type}-${activity.id || activity.application_id || activity.name || "activity"}`;
+}
+
 function getActivityDisplayText(activity: DiscordActivity) {
   switch (activity.status_display_type) {
     case 1:
@@ -102,7 +115,7 @@ function getDiscordAssetUrl(activity: DiscordActivity, asset?: string) {
 }
 
 function getActivityVisual(activity: DiscordActivity, data: lanyard.Data): ActivityVisual | undefined {
-  const isSpotify = activity.type === 2 && activity.name === "Spotify";
+  const isSpotify = isSpotifyActivity(activity);
   const thumbnailUrl = isSpotify
     ? data.spotify?.album_art_url ?? getDiscordAssetUrl(activity, activity.assets?.large_image)
     : getDiscordAssetUrl(activity, activity.assets?.large_image);
@@ -112,7 +125,7 @@ function getActivityVisual(activity: DiscordActivity, data: lanyard.Data): Activ
 
   return {
     thumbnailUrl,
-    thumbnailAlt: activity.assets?.large_text || activity.name || "Activity artwork",
+    thumbnailAlt: isSpotify ? data.spotify?.album || "Spotify album artwork" : activity.assets?.large_text || activity.name || "Activity artwork",
     iconUrl,
     iconAlt: activity.assets?.small_text || activity.name || "Activity icon",
     iconKind: isSpotify && !iconUrl ? "spotify" : undefined,
@@ -120,7 +133,7 @@ function getActivityVisual(activity: DiscordActivity, data: lanyard.Data): Activ
 }
 
 function getActivityProgress(activity: DiscordActivity, data: lanyard.Data): ActivityProgress | undefined {
-  if (activity.type === 2 && activity.name === "Spotify" && data.spotify?.timestamps) {
+  if (isSpotifyActivity(activity) && data.spotify?.timestamps) {
     return {
       start: data.spotify.timestamps.start,
       end: data.spotify.timestamps.end,
@@ -137,12 +150,12 @@ function getActivityProgress(activity: DiscordActivity, data: lanyard.Data): Act
 
 function getActivityTooltip(activity: DiscordActivity, otherActivitiesCount: number, data: lanyard.Data): ActivityTooltip {
   const title = activity.type === 4 ? formatCustomActivity(activity) : activity.name || "Activity";
-  const lines = [
-    activity.details,
-    activity.state,
-    activity.assets?.large_text,
-    activity.assets?.small_text,
-  ].filter((line): line is string => Boolean(line && line !== title));
+  const lines = (isSpotifyActivity(activity) && data.spotify
+    ? [data.spotify.song, data.spotify.artist, data.spotify.album]
+    : [activity.details, activity.state, activity.assets?.large_text, activity.assets?.small_text]
+  )
+    .filter((line): line is string => Boolean(line && line !== title))
+    .filter((line, index, values) => values.indexOf(line) === index);
 
   return {
     eyebrow: getActivityEyebrow(activity),
@@ -171,25 +184,28 @@ function getActivitySummary(activity: DiscordActivity, data: lanyard.Data): Acti
 }
 
 function formatActivity(activity: DiscordActivity, otherActivities: DiscordActivity[], data: lanyard.Data): ActivityStatus {
-  const displayText = getActivityDisplayText(activity);
+  const displayText = isSpotifyActivity(activity) && data.spotify
+    ? data.spotify.song
+    : getActivityDisplayText(activity);
   const tooltip = getActivityTooltip(activity, otherActivities.length, data);
+  const activityId = getActivityKey(activity);
   tooltip.otherActivities = otherActivities.map((item) => getActivitySummary(item, data));
 
   switch (activity.type) {
     case 0:
-      return {type: "activity", activityType: activity.type, text: `Playing ${displayText}`, tooltip};
+      return {type: "activity", activityId, activityType: activity.type, text: `Playing ${displayText}`, tooltip};
     case 1:
-      return {type: "activity", activityType: activity.type, text: `Streaming ${activity.details || displayText}`, tooltip};
+      return {type: "activity", activityId, activityType: activity.type, text: `Streaming ${activity.details || displayText}`, tooltip};
     case 2:
-      return {type: "activity", activityType: activity.type, text: `Listening to ${displayText}`, tooltip};
+      return {type: "activity", activityId, activityType: activity.type, text: `Listening to ${displayText}`, tooltip};
     case 3:
-      return {type: "activity", activityType: activity.type, text: `Watching ${displayText}`, tooltip};
+      return {type: "activity", activityId, activityType: activity.type, text: `Watching ${displayText}`, tooltip};
     case 4:
-      return {type: "activity", activityType: activity.type, text: formatCustomActivity(activity), tooltip};
+      return {type: "activity", activityId, activityType: activity.type, text: formatCustomActivity(activity), tooltip};
     case 5:
-      return {type: "activity", activityType: activity.type, text: `Competing in ${displayText}`, tooltip};
+      return {type: "activity", activityId, activityType: activity.type, text: `Competing in ${displayText}`, tooltip};
     default:
-      return {type: "activity", activityType: activity.type, text: displayText, tooltip};
+      return {type: "activity", activityId, activityType: activity.type, text: displayText, tooltip};
   }
 }
 
@@ -197,13 +213,23 @@ export const $status = computed($data, (data): Status | null => {
   if (!data) return null;
   if (data.discord_status === "offline") return {type: "offline"};
 
-  const activity = getPrimaryActivity(data.activities);
+  const currentActivities = data.activities.filter((activity) => isCurrentActivity(activity, data));
+  const activity = getPrimaryActivity(currentActivities);
   if (activity) {
-    const otherActivities = data.activities.filter((item) => item !== activity);
+    const otherActivities = currentActivities.filter((item) => item !== activity);
     return formatActivity(activity, otherActivities, data);
   }
 
   return {type: "none"};
+});
+
+export const $activityStatuses = computed($data, (data): ActivityStatus[] => {
+  if (!data || data.discord_status === "offline") return [];
+
+  const activities = data.activities.filter((activity) => (
+    activity.type !== CUSTOM_ACTIVITY_TYPE && isCurrentActivity(activity, data)
+  ));
+  return activities.map((activity) => formatActivity(activity, [], data));
 });
 
 export const $projects = computed($data, (data): Project[] => {
@@ -212,6 +238,10 @@ export const $projects = computed($data, (data): Project[] => {
 
 export const $latestProject = computed($data, (data): Project | null => {
   return parseKV<Project | null>(data?.kv?.latest_project, null);
+});
+
+export const $featuredProject = computed($data, (data): Project | null => {
+  return parseKV<Project | null>(data?.kv?.featured_project ?? data?.kv?.latest_project, null);
 });
 
 export type Project = {
@@ -225,6 +255,7 @@ export type Project = {
 
 export type ActivityStatus = {
   type: "activity";
+  activityId: string;
   activityType: number;
   text: string;
   tooltip: ActivityTooltip;

@@ -1,25 +1,26 @@
 import {A} from "@solidjs/router";
 
-export function ButtonLink({text, url}: { text: string, url: string }) {
+type ButtonLinkProps = {
+  text: string;
+  url: string;
+  variant?: "primary" | "secondary";
+};
+
+export function ButtonLink({text, url, variant = "primary"}: ButtonLinkProps) {
+  const className = `action-link action-link--${variant}`;
+  const content = (
+    <>
+      <span>{text}</span>
+      <svg viewBox="0 0 20 20" aria-hidden="true">
+        <path fill="currentColor" d="m7.2 4.4 5.6 5.6-5.6 5.6 1.4 1.4 7-7-7-7-1.4 1.4Z"/>
+      </svg>
+    </>
+  );
+
   if (url.startsWith("/")) {
     return (
-      <A
-        href={url}
-        class={"text-[#4A0F13] hover:bg-[#ffb59c]"}
-        bg={"#ebc2b4"}
-        flex={"auto"}
-        text={"center sm"}
-        align={"middle"}
-        rounded={"full"}
-        font={"semibold"}
-        transition={"colors"}
-        duration={"200"}
-        md={"px-10"}
-        p={"md:x-10 y-3"}
-        w={"auto"}
-        no-underline
-      >
-        <span>{text}</span>
+      <A href={url} class={className}>
+        {content}
       </A>
     );
   }
@@ -27,21 +28,11 @@ export function ButtonLink({text, url}: { text: string, url: string }) {
   return (
     <a
       href={url}
-      class={"text-[#4A0F13] hover:bg-[#ffb59c]"}
-      bg={"#ebc2b4"}
-      flex={"auto"}
-      text={"center sm"}
-      align={"middle"}
-      rounded={"full"}
-      font={"semibold"}
-      transition={"colors"}
-      duration={"200"}
-      md={"px-10"}
-      p={"md:x-10 y-3"}
-      w={"auto"}
-      no-underline
+      class={className}
+      target="_blank"
+      rel="noreferrer"
     >
-      <span>{text}</span>
+      {content}
     </a>
-  )
+  );
 }
