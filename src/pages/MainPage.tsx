@@ -274,7 +274,10 @@ const AboutMe = () => {
     <>
       <div bg={"#271d1a"} rounded={"3xl"} p={"5"}>
         <h1 class={"leading-none"} font={"extrabold"} text={"3xl"} m={"0"}>Hello there!</h1>
-        <p class={"leading-normal"} m={"0 t-2"}>I build random stuff and keep picking up whatever looks fun to learn. Most of my time goes into web projects now, and I like turning small ideas into useful little tools. You can check out some of the things I've made here. <br/><br/> If I'm not coding, I'm probably queueing VALORANT, missing notes in osu!, or just touching some grass.
+        <p class={"leading-normal"} m={"0 t-2"}>
+          I turn curious little ideas into games, tools, and web things that are useful, playful, or both on a good day. Mostly web right now. Sometimes desktop apps. Occasionally a game. Always whatever looked interesting enough to lose an evening to.
+          <br/><br/>
+          Away from code, I’m probably queueing VALORANT, missing notes in osu!, watching movies and tv shows, or remembering that grass exists.
         </p>
       </div>
     </>
