@@ -23,8 +23,12 @@
     background: color-mix(in srgb, var(--md-sys-color-on-surface) 7%, transparent);
   }
 
+  .project-card:hover .project-media img,
+  .project-card:hover .project-illustration {
+    filter: grayscale(0) saturate(1.08) contrast(1);
+  }
+
   .project-card:hover .project-media img {
-    filter: saturate(1.08);
     transform: scale(1.035);
   }
 
