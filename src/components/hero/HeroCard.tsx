@@ -124,8 +124,8 @@ export function HeroCard() {
       <div class="hero-bottom">
         <p>Small digital things made to solve a problem, test an idea, or simply be fun.</p>
         <div class="hero-actions">
-          <ActionLink href="/projects">Explore projects</ActionLink>
-          <ActionLink href="https://github.com/brokiem" variant="secondary">Visit GitHub</ActionLink>
+          <ActionLink href="/projects" hideChevron={true}>Explore projects</ActionLink>
+          <ActionLink href="https://github.com/brokiem" variant="secondary" hideChevron={true}>Visit GitHub</ActionLink>
         </div>
       </div>
 
