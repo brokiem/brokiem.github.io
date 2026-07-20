@@ -1,41 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-mood="violet">
 <head>
   <meta charset="UTF-8">
-  <link href="/favicon.ico" rel="icon">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#141218">
 
   <title>brokiem — curious little things</title>
-  <meta content="Games, tools, and web experiments by brokiem." name="description">
-  <meta content="brokiem, brokiem website, brokiem is a dev, brokiem github, brokiemydog, broki, kawaismp"
-        name="keywords">
-  <!-- Google / Search Engine Tags -->
-  <meta content="brokiem - website" itemprop="name">
-  <meta content="Games, tools, and web experiments by brokiem." itemprop="description">
-  <meta content="https://avatars.githubusercontent.com/u/61258338" itemprop="image">
-  <!-- Facebook Meta Tags -->
-  <meta content="https://brokiem.is-a.dev" property="og:url">
-  <meta content="website" property="og:type">
-  <meta content="brokiem - website" property="og:title">
-  <meta content="Games, tools, and web experiments by brokiem." property="og:description">
-  <meta content="https://avatars.githubusercontent.com/u/61258338?s=100" property="og:image">
-  <!-- Twitter Meta Tags -->
-  <meta content="summary_large_image" name="twitter:card">
-  <meta content="brokiem - website" name="twitter:title">
-  <meta content="Games, tools, and web experiments by brokiem." name="twitter:description">
-  <meta content="https://avatars.githubusercontent.com/u/61258338" name="twitter:image">
+  <meta name="description" content="Games, tools, and web experiments by brokiem.">
+  <meta name="keywords" content="brokiem, developer, web experiments, games, tools">
 
-  <!-- Preload images -->
-  <link as="image" href="/brokiem.webp" rel="preload">
-  <link as="font" href="/src/assets/google-sans-flex-site.woff2" rel="preload" type="font/woff2" crossorigin>
-  <!-- Misc -->
-  <meta content="avMYpzcNq1BU9InVUzT3RoBfxWCO68LgKJrq7ZWqqbE" name="google-site-verification"/>
-  <meta content="#130f0e" name="theme-color"/>
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://brokiem.is-a.dev">
+  <meta property="og:title" content="brokiem — curious little things">
+  <meta property="og:description" content="Games, tools, and web experiments by brokiem.">
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/61258338?s=512">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="brokiem — curious little things">
+  <meta name="twitter:description" content="Games, tools, and web experiments by brokiem.">
+  <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/61258338?s=512">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="preload" href="/brokiem.webp" as="image" type="image/webp">
+  <link rel="preload" href="/google-sans-flex-site.woff2" as="font" type="font/woff2" crossorigin>
+  <meta name="google-site-verification" content="avMYpzcNq1BU9InVUzT3RoBfxWCO68LgKJrq7ZWqqbE">
+  <script>
+    try {
+      const mood = localStorage.getItem("brokiem-mood");
+      if (["violet", "blue", "teal", "green", "amber", "rose", "oled"].includes(mood)) document.documentElement.dataset.mood = mood;
+    } catch {}
+  </script>
 </head>
 <body>
-<noscript>You need to enable JavaScript to run this app.</noscript>
-<!-- Curious enough to read the source? Try typing "broki" while you're here. -->
-<div id="root"></div>
-<script src="/src/index.tsx" type="module"></script>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <!-- Curious enough to read the source? Try typing "broki" in the home page. -->
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
 </body>
 </html>

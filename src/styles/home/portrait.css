@@ -1,0 +1,115 @@
+.portrait-card {
+  --tilt-x: 0deg;
+  --tilt-y: 0deg;
+  --glow-x: 50%;
+  --glow-y: 50%;
+
+  position: relative;
+  grid-column: 9 / span 4;
+  min-height: 300px;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 32px;
+  background: #1f6f49;
+  cursor: pointer;
+  transform: perspective(900px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
+  transition: box-shadow 300ms ease;
+  will-change: transform;
+}
+
+.portrait-card::after {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--glow-x) var(--glow-y), rgba(255, 255, 255, 0.2), transparent 32%);
+  opacity: 0.8;
+  pointer-events: none;
+  content: "";
+}
+
+.portrait-card img {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  object-fit: cover;
+  transform: scale(1.04);
+  transition: filter 500ms ease, transform 600ms var(--spring);
+}
+
+.portrait-sheen {
+  position: absolute;
+  z-index: 1;
+  inset: auto 0 0;
+  height: 46%;
+  background: linear-gradient(transparent, rgba(5, 27, 17, 0.76));
+  pointer-events: none;
+}
+
+.portrait-label {
+  position: absolute;
+  z-index: 2;
+  right: 22px;
+  bottom: 20px;
+  left: 22px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  color: #f4fff6;
+  font-size: 1.65rem;
+  font-weight: 760;
+  letter-spacing: -0.04em;
+}
+
+.portrait-label > span {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border-radius: 50%;
+  color: #123a22;
+  background: #d9ff9c;
+  font-size: 1rem;
+  transition: transform 400ms var(--spring);
+}
+
+.grass-note {
+  position: absolute;
+  z-index: 3;
+  top: 22px;
+  left: 22px;
+  display: flex;
+  padding: 12px 15px;
+  flex-direction: column;
+  border-radius: 20px 20px 20px 6px;
+  color: #123a22;
+  background: #e5ffb8;
+  box-shadow: 0 12px 32px rgba(5, 29, 17, 0.25);
+  font-size: 0.76rem;
+  line-height: 1.3;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px) rotate(-3deg) scale(0.9);
+  transition: opacity 260ms ease, transform 420ms var(--spring);
+}
+
+.grass-note strong {
+  font-size: 0.84rem;
+}
+
+.portrait-card.has-found-grass {
+  border-radius: 32px;
+}
+
+.portrait-card.has-found-grass img {
+  filter: saturate(1.18) brightness(1.04);
+  transform: scale(1.06);
+}
+
+.portrait-card.has-found-grass .grass-note {
+  opacity: 1;
+  transform: translateY(0) rotate(-3deg) scale(1);
+}
+
+.portrait-card.has-found-grass .portrait-label > span {
+  transform: rotate(135deg);
+}
+

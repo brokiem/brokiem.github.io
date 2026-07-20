@@ -1,0 +1,8 @@
+@font-face {
+  font-family: "Google Sans Flex Variable";
+  src: url("/google-sans-flex-site.woff2") format("woff2");
+  font-weight: 100 1000;
+  font-stretch: 25% 151%;
+  font-style: oblique -20deg 0deg;
+  font-display: swap;
+}

@@ -1,0 +1,226 @@
+:root {
+  font-family: "Google Sans Flex Variable", "Google Sans", Inter, system-ui, sans-serif;
+  font-synthesis: none;
+  font-optical-sizing: auto;
+  color-scheme: dark;
+  color: var(--md-sys-color-on-surface);
+  background: var(--md-sys-color-background);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  --md-sys-color-background: #141218;
+  --md-sys-color-on-background: #e6e0e9;
+  --md-sys-color-surface: #141218;
+  --md-sys-color-surface-container-low: #1d1b20;
+  --md-sys-color-surface-container: #211f26;
+  --md-sys-color-surface-container-high: #2b2930;
+  --md-sys-color-surface-container-highest: #36343b;
+  --md-sys-color-on-surface: #e6e0e9;
+  --md-sys-color-on-surface-variant: #cac4d0;
+  --md-sys-color-outline-variant: #49454f;
+  --md-sys-color-primary: #d0bcff;
+  --md-sys-color-on-primary: #381e72;
+  --md-sys-color-primary-container: #4f378b;
+  --md-sys-color-on-primary-container: #eaddff;
+  --md-sys-color-secondary-container: #4a4458;
+  --md-sys-color-on-secondary-container: #e8def8;
+  --md-sys-color-tertiary: #efb8c8;
+  --md-sys-color-tertiary-container: #633b48;
+  --md-sys-color-on-tertiary-container: #ffd8e4;
+
+  --surface-glass: rgba(29, 27, 32, 0.94);
+  --surface-border: rgba(230, 224, 233, 0.045);
+  --hero-bg: #2b2930;
+  --hero-ink: #e6e0e9;
+  --hero-emphasis: #d0bcff;
+  --accent: #d0bcff;
+  --accent-ink: #381e72;
+  --ambient-one: rgba(208, 188, 255, 0.07);
+  --ambient-two: rgba(239, 184, 200, 0.035);
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --spring: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+:root[data-mood="blue"] {
+  --md-sys-color-background: #111318;
+  --md-sys-color-surface: #111318;
+  --md-sys-color-surface-container-low: #191c20;
+  --md-sys-color-surface-container: #1d2024;
+  --md-sys-color-surface-container-high: #282a2f;
+  --md-sys-color-surface-container-highest: #33353a;
+  --md-sys-color-primary: #a8c7fa;
+  --md-sys-color-on-primary: #062e6f;
+  --md-sys-color-primary-container: #0842a0;
+  --md-sys-color-on-primary-container: #d3e3fd;
+  --md-sys-color-secondary-container: #3e4756;
+  --md-sys-color-on-secondary-container: #dae2f9;
+  --md-sys-color-tertiary: #a7c7c7;
+  --md-sys-color-tertiary-container: #294b4b;
+  --md-sys-color-on-tertiary-container: #c2e9e9;
+  --surface-glass: rgba(25, 28, 32, 0.94);
+  --hero-bg: #282a2f;
+  --hero-ink: #e2e2e9;
+  --hero-emphasis: #a8c7fa;
+  --accent: #a8c7fa;
+  --accent-ink: #062e6f;
+  --ambient-one: rgba(168, 199, 250, 0.07);
+  --ambient-two: rgba(167, 199, 199, 0.035);
+}
+
+:root[data-mood="teal"] {
+  --md-sys-color-background: #0e1513;
+  --md-sys-color-on-background: #dde4e1;
+  --md-sys-color-surface: #0e1513;
+  --md-sys-color-surface-container-low: #171d1b;
+  --md-sys-color-surface-container: #1b211f;
+  --md-sys-color-surface-container-high: #252b2a;
+  --md-sys-color-surface-container-highest: #303634;
+  --md-sys-color-on-surface: #dde4e1;
+  --md-sys-color-on-surface-variant: #bec9c5;
+  --md-sys-color-outline-variant: #3f4946;
+  --md-sys-color-primary: #83d5c6;
+  --md-sys-color-on-primary: #003730;
+  --md-sys-color-primary-container: #005047;
+  --md-sys-color-on-primary-container: #9ff2e2;
+  --md-sys-color-secondary-container: #334b46;
+  --md-sys-color-on-secondary-container: #cde8e1;
+  --md-sys-color-tertiary: #accae5;
+  --md-sys-color-tertiary-container: #2c4a60;
+  --md-sys-color-on-tertiary-container: #cae6ff;
+  --surface-glass: rgba(23, 29, 27, 0.94);
+  --surface-border: rgba(221, 228, 225, 0.045);
+  --hero-bg: #252b2a;
+  --hero-ink: #dde4e1;
+  --hero-emphasis: #83d5c6;
+  --accent: #83d5c6;
+  --accent-ink: #003730;
+  --ambient-one: rgba(131, 213, 198, 0.07);
+  --ambient-two: rgba(172, 202, 229, 0.035);
+}
+
+:root[data-mood="green"] {
+  --md-sys-color-background: #101510;
+  --md-sys-color-surface: #101510;
+  --md-sys-color-surface-container-low: #181d18;
+  --md-sys-color-surface-container: #1c211c;
+  --md-sys-color-surface-container-high: #262b26;
+  --md-sys-color-surface-container-highest: #313631;
+  --md-sys-color-primary: #a8dab5;
+  --md-sys-color-on-primary: #113821;
+  --md-sys-color-primary-container: #285d38;
+  --md-sys-color-on-primary-container: #c3f1cd;
+  --md-sys-color-secondary-container: #354b3a;
+  --md-sys-color-on-secondary-container: #d0e8d4;
+  --md-sys-color-tertiary: #b7c9a8;
+  --md-sys-color-tertiary-container: #394b30;
+  --md-sys-color-on-tertiary-container: #d3e8c2;
+  --surface-glass: rgba(24, 29, 24, 0.94);
+  --hero-bg: #262b26;
+  --hero-ink: #e1e4de;
+  --hero-emphasis: #a8dab5;
+  --accent: #a8dab5;
+  --accent-ink: #113821;
+  --ambient-one: rgba(168, 218, 181, 0.065);
+  --ambient-two: rgba(183, 201, 168, 0.035);
+}
+
+:root[data-mood="amber"] {
+  --md-sys-color-background: #18130b;
+  --md-sys-color-on-background: #ede1d4;
+  --md-sys-color-surface: #18130b;
+  --md-sys-color-surface-container-low: #201b13;
+  --md-sys-color-surface-container: #241f17;
+  --md-sys-color-surface-container-high: #2f2921;
+  --md-sys-color-surface-container-highest: #3a342b;
+  --md-sys-color-on-surface: #ede1d4;
+  --md-sys-color-on-surface-variant: #d2c4b4;
+  --md-sys-color-outline-variant: #4f4539;
+  --md-sys-color-primary: #f2be6e;
+  --md-sys-color-on-primary: #442c00;
+  --md-sys-color-primary-container: #614000;
+  --md-sys-color-on-primary-container: #ffddb0;
+  --md-sys-color-secondary-container: #55442a;
+  --md-sys-color-on-secondary-container: #f9debb;
+  --md-sys-color-tertiary: #b6cea3;
+  --md-sys-color-tertiary-container: #394c2b;
+  --md-sys-color-on-tertiary-container: #d2eabd;
+  --surface-glass: rgba(32, 27, 19, 0.94);
+  --surface-border: rgba(237, 225, 212, 0.045);
+  --hero-bg: #2f2921;
+  --hero-ink: #ede1d4;
+  --hero-emphasis: #f2be6e;
+  --accent: #f2be6e;
+  --accent-ink: #442c00;
+  --ambient-one: rgba(242, 190, 110, 0.07);
+  --ambient-two: rgba(182, 206, 163, 0.035);
+}
+
+:root[data-mood="rose"] {
+  --md-sys-color-background: #191113;
+  --md-sys-color-on-background: #efdee0;
+  --md-sys-color-surface: #191113;
+  --md-sys-color-surface-container-low: #22191b;
+  --md-sys-color-surface-container: #261d1f;
+  --md-sys-color-surface-container-high: #312829;
+  --md-sys-color-surface-container-highest: #3c3234;
+  --md-sys-color-on-surface: #efdee0;
+  --md-sys-color-on-surface-variant: #d6c2c4;
+  --md-sys-color-outline-variant: #524346;
+  --md-sys-color-primary: #ffb1c2;
+  --md-sys-color-on-primary: #551d2d;
+  --md-sys-color-primary-container: #713343;
+  --md-sys-color-on-primary-container: #ffd9df;
+  --md-sys-color-secondary-container: #5b3f45;
+  --md-sys-color-on-secondary-container: #ffd9df;
+  --md-sys-color-tertiary: #ecbe91;
+  --md-sys-color-tertiary-container: #60401d;
+  --md-sys-color-on-tertiary-container: #ffdcbd;
+  --surface-glass: rgba(34, 25, 27, 0.94);
+  --surface-border: rgba(239, 222, 224, 0.045);
+  --hero-bg: #312829;
+  --hero-ink: #efdee0;
+  --hero-emphasis: #ffb1c2;
+  --accent: #ffb1c2;
+  --accent-ink: #551d2d;
+  --ambient-one: rgba(255, 177, 194, 0.07);
+  --ambient-two: rgba(236, 190, 145, 0.035);
+}
+
+:root[data-mood="oled"] {
+  --md-sys-color-background: #000;
+  --md-sys-color-on-background: #f2f2f2;
+  --md-sys-color-surface: #000;
+  --md-sys-color-surface-container-low: #050505;
+  --md-sys-color-surface-container: #090909;
+  --md-sys-color-surface-container-high: #101010;
+  --md-sys-color-surface-container-highest: #181818;
+  --md-sys-color-on-surface: #f2f2f2;
+  --md-sys-color-on-surface-variant: #c8c8c8;
+  --md-sys-color-outline-variant: #303030;
+  --md-sys-color-primary: #a8c7fa;
+  --md-sys-color-on-primary: #062e6f;
+  --md-sys-color-primary-container: #102b50;
+  --md-sys-color-on-primary-container: #d3e3fd;
+  --md-sys-color-secondary-container: #20242b;
+  --md-sys-color-on-secondary-container: #dae2f9;
+  --md-sys-color-tertiary: #a7c7c7;
+  --md-sys-color-tertiary-container: #183535;
+  --md-sys-color-on-tertiary-container: #c2e9e9;
+  --surface-glass: rgba(5, 5, 5, 0.96);
+  --surface-border: rgba(255, 255, 255, 0.05);
+  --hero-bg: #090909;
+  --hero-ink: #f2f2f2;
+  --hero-emphasis: #a8c7fa;
+  --accent: #a8c7fa;
+  --accent-ink: #062e6f;
+  --ambient-one: rgba(91, 143, 249, 0.045);
+  --ambient-two: transparent;
+  --shadow-color: rgba(0, 0, 0, 0.55);
+}
+
+* {
+  box-sizing: border-box;
+}
+
