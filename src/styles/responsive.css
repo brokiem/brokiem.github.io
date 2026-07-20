@@ -14,6 +14,11 @@
     background: var(--md-sys-color-surface-container-highest);
   }
 
+  .mood-switcher:hover {
+    border-color: var(--md-sys-color-primary);
+    background: color-mix(in srgb, var(--md-sys-color-primary) 10%, transparent);
+  }
+
   .status-popover-trigger:hover {
     background: color-mix(in srgb, var(--md-sys-color-on-surface) 7%, transparent);
   }
@@ -163,8 +168,8 @@
   }
 
   .site-nav {
-    min-height: 58px;
-    padding: 5px 6px 5px 7px;
+    min-height: 0;
+    padding: 6px;
   }
 
   .brand-mark,
@@ -179,7 +184,8 @@
   }
 
   .nav-link {
-    padding: 10px 12px;
+    min-height: 44px;
+    padding: 0 12px;
     font-size: 0.82rem;
   }
 

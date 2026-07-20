@@ -19,7 +19,7 @@ export class ProjectRevealController {
 
     this.#observer = new IntersectionObserver(this.#intersect, {
       rootMargin: "0px",
-      threshold: 0.04,
+      threshold: 0.14,
     });
     grid.addEventListener("focusin", this.#focus);
     this.#frame = requestAnimationFrame(() => {

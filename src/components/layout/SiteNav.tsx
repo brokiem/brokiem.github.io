@@ -1,6 +1,6 @@
 import {A, useLocation} from "@solidjs/router";
 import {createSignal, onMount, Show} from "solid-js";
-import {GitHubIcon, SparkIcon} from "../ui/Icons";
+import {FormatPaintIcon} from "../ui/Icons";
 
 const themes = [
   {id: "violet", label: "Material Violet", color: "#141218"},
@@ -54,9 +54,8 @@ export function SiteNav() {
             title={`Mood: ${themes[themeIndex()]?.label ?? "Material Violet"}`}
             data-ripple
           >
-            <span class="mood-switcher-dot" aria-hidden="true"/>
-            <Show when={themeRevision() || undefined} keyed fallback={<SparkIcon/>}>
-              {(_revision) => <span class="mood-switcher-icon"><SparkIcon/></span>}
+            <Show when={themeRevision() || undefined} keyed fallback={<FormatPaintIcon/>}>
+              {(_revision) => <span class="mood-switcher-icon"><FormatPaintIcon/></span>}
             </Show>
           </button>
         </div>

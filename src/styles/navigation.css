@@ -20,8 +20,8 @@
   grid-template-columns: 1fr auto;
   align-items: center;
   width: 100%;
-  min-height: 64px;
-  padding: 7px 8px 7px 10px;
+  min-height: 0;
+  padding: 6px;
   border: 1px solid var(--surface-border);
   border-radius: 32px;
   background: var(--surface-glass);
@@ -62,7 +62,10 @@
 }
 
 .nav-link {
-  padding: 11px 17px;
+  display: inline-flex;
+  min-height: 46px;
+  padding: 0 17px;
+  align-items: center;
   border-radius: 999px;
   color: var(--md-sys-color-on-surface-variant);
   font-size: 0.9rem;
@@ -102,31 +105,66 @@
   height: 21px;
 }
 
-.mood-switcher-icon {
-  display: grid;
-  place-items: center;
-  animation: mood-switcher-pop 420ms cubic-bezier(0.2, 0.8, 0.2, 1);
+.mood-switcher .material-symbols-outlined {
+  display: block;
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+  font-variation-settings: "FILL" 0, "wght" 560, "GRAD" 0, "opsz" 24;
+  line-height: 24px;
+  text-align: center;
 }
 
-@keyframes mood-switcher-pop {
-  from { transform: scale(0.82) rotate(-18deg); }
-  to { transform: scale(1) rotate(0deg); }
+.mood-switcher-icon {
+  position: relative;
+  display: grid;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+}
+
+.mood-switcher-icon .material-symbols-outlined {
+  transform-origin: 48% 58%;
+  animation: mood-paint-pour 560ms cubic-bezier(0.2, 0.9, 0.2, 1) both;
+}
+
+.mood-switcher-icon::after {
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  width: 5px;
+  height: 7px;
+  border-radius: 60% 60% 70% 70%;
+  background: currentColor;
+  content: "";
+  opacity: 0;
+  animation: mood-paint-drop 560ms cubic-bezier(0.2, 0.9, 0.2, 1) both;
 }
 
 .mood-switcher {
   position: relative;
   overflow: hidden;
-  color: var(--accent-ink);
-  background: var(--accent);
+  border: 1px solid color-mix(in srgb, var(--md-sys-color-outline-variant) 82%, transparent);
+  color: var(--md-sys-color-primary);
+  background: transparent;
+  transition: color 180ms ease, background 180ms ease, border-color 180ms ease, border-radius 320ms var(--spring), transform 320ms var(--spring);
 }
 
-.mood-switcher-dot {
-  position: absolute;
-  right: 5px;
-  bottom: 5px;
-  width: 8px;
-  height: 8px;
-  border: 2px solid var(--accent);
-  border-radius: 50%;
-  background: var(--md-sys-color-primary);
+.mood-switcher:active {
+  border-radius: 16px 24px 16px 24px;
+  background: color-mix(in srgb, var(--md-sys-color-primary) 16%, transparent);
+  transform: scale(0.92);
+}
+
+@keyframes mood-paint-pour {
+  0% { transform: translate(-2px, 2px) rotate(-24deg) scale(0.78); }
+  42% { transform: translate(1px, -1px) rotate(13deg) scale(1.1, 0.92); }
+  72% { transform: rotate(-5deg) scale(0.97, 1.05); }
+  100% { transform: rotate(0) scale(1); }
+}
+
+@keyframes mood-paint-drop {
+  0%, 34% { opacity: 0; transform: translate(-2px, -3px) rotate(45deg) scale(0); }
+  50% { opacity: 0.45; transform: translate(0, 0) rotate(45deg) scale(1); }
+  100% { opacity: 0; transform: translate(2px, 5px) rotate(45deg) scale(0.72); }
 }
