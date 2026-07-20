@@ -45,12 +45,12 @@
 .projects-grid {
   display: grid;
   margin-top: 16px;
-  overflow: hidden;
+  overflow: visible;
   border: 0;
-  border-radius: 32px;
-  background: var(--md-sys-color-background);
+  border-radius: 0;
+  background: transparent;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
+  gap: 16px;
 }
 
 .project-card {
@@ -63,14 +63,8 @@
   --project-glow-strength: 0;
   --project-glow-border-strength: 0;
   --project-glow-cool: color-mix(in srgb, var(--project-primary) 52%, #79dcff);
-  --project-card-top-left: 6px;
-  --project-card-top-right: 6px;
-  --project-card-bottom-right: 6px;
-  --project-card-bottom-left: 6px;
-  --project-media-top-left: 6px;
-  --project-media-top-right: 6px;
-  --project-media-bottom-right: 6px;
-  --project-media-bottom-left: 6px;
+  --project-card-radius: 26px;
+  --project-media-radius: 18px;
   --project-reveal-x: 0px;
   --project-reveal-y: 14px;
   --project-reveal-scale: 0.985;
@@ -84,12 +78,12 @@
   min-height: 316px;
   flex-direction: column;
   overflow: hidden;
-  border: 1px solid color-mix(in srgb, var(--md-sys-color-outline-variant) 38%, transparent);
-  border-radius: var(--project-card-top-left) var(--project-card-top-right) var(--project-card-bottom-right) var(--project-card-bottom-left);
+  border: 1px solid color-mix(in srgb, var(--md-sys-color-outline-variant) 52%, transparent);
+  border-radius: var(--project-card-radius);
   background: var(--md-sys-color-surface-container);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.09);
   contain: layout paint style;
-  transition: border-color 220ms ease, background 220ms ease;
+  transition: border-color 220ms ease, background 220ms ease, box-shadow 220ms ease;
 }
 
 .projects-grid > .project-card:nth-child(3n + 1) {
@@ -211,11 +205,11 @@
 .project-media {
   position: relative;
   z-index: 1;
-  height: 104px;
-  min-height: 104px;
-  margin: 0;
+  height: 160px;
+  min-height: 160px;
+  margin: 10px 10px 0;
   overflow: hidden;
-  border-radius: var(--project-card-top-left) var(--project-card-top-right) 0 0;
+  border-radius: var(--project-media-radius);
   background: color-mix(in srgb, var(--project-primary) 12%, var(--md-sys-color-surface-container-highest));
 }
 
@@ -473,19 +467,19 @@
 
 .project-title-row h2 {
   margin: 0;
-  font-size: clamp(1.3rem, 1.8vw, 1.65rem);
-  font-weight: 720;
-  letter-spacing: -0.035em;
-  line-height: 1.05;
+  font-size: clamp(1.25rem, 1.5vw, 1.45rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.12;
 }
 
 .project-copy p {
   display: -webkit-box;
-  margin: 9px 0 10px;
+  margin: 8px 0 12px;
   overflow: hidden;
   color: color-mix(in srgb, var(--md-sys-color-on-surface-variant) 78%, var(--md-sys-color-on-surface));
-  font-size: 0.98rem;
-  line-height: 1.52;
+  font-size: 0.94rem;
+  line-height: 1.48;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
@@ -595,30 +589,10 @@
 .project-card-skeleton > span {
   position: absolute;
   inset: 12px;
-  border-radius: var(--project-media-top-left) var(--project-media-top-right) var(--project-media-bottom-right) var(--project-media-bottom-left);
+  border-radius: 8px;
   background: linear-gradient(100deg, rgba(255,255,255,0.025) 20%, rgba(255,255,255,0.08) 40%, rgba(255,255,255,0.025) 60%);
   background-size: 200% 100%;
   animation: skeleton-shimmer 1.4s linear infinite;
-}
-
-.projects-grid > .project-card:first-child {
-  --project-card-top-left: 32px;
-  --project-media-top-left: 24px;
-}
-
-.projects-grid > .project-card:nth-child(3) {
-  --project-card-top-right: 32px;
-  --project-media-top-right: 24px;
-}
-
-.projects-grid > .project-card:nth-child(3n + 1):nth-last-child(-n + 3) {
-  --project-card-bottom-left: 32px;
-  --project-media-bottom-left: 24px;
-}
-
-.projects-grid > .project-card:last-child {
-  --project-card-bottom-right: 32px;
-  --project-media-bottom-right: 24px;
 }
 
 .projects-footer a {

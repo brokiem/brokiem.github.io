@@ -23,6 +23,11 @@
     transform: scale(1.035);
   }
 
+  .project-card:hover {
+    background: color-mix(in srgb, var(--md-sys-color-on-surface) 3%, var(--md-sys-color-surface-container));
+    box-shadow: 0 12px 32px var(--shadow-color);
+  }
+
   .project-icon-actions a:hover,
   .project-icon-actions button:hover {
     border-color: color-mix(in srgb, var(--md-sys-color-outline-variant) 42%, transparent);
@@ -69,37 +74,6 @@
 
   .projects-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .projects-grid > .project-card {
-    --project-card-top-left: 6px;
-    --project-card-top-right: 6px;
-    --project-card-bottom-right: 6px;
-    --project-card-bottom-left: 6px;
-    --project-media-top-left: 6px;
-    --project-media-top-right: 6px;
-    --project-media-bottom-right: 6px;
-    --project-media-bottom-left: 6px;
-  }
-
-  .projects-grid > .project-card:first-child {
-    --project-card-top-left: 32px;
-    --project-media-top-left: 24px;
-  }
-
-  .projects-grid > .project-card:nth-child(2) {
-    --project-card-top-right: 32px;
-    --project-media-top-right: 24px;
-  }
-
-  .projects-grid > .project-card:nth-child(2n + 1):nth-last-child(-n + 2) {
-    --project-card-bottom-left: 32px;
-    --project-media-bottom-left: 24px;
-  }
-
-  .projects-grid > .project-card:last-child {
-    --project-card-bottom-right: 32px;
-    --project-media-bottom-right: 24px;
   }
 
   .projects-grid > .project-card:nth-child(odd) {
@@ -334,8 +308,7 @@
 
   .projects-grid {
     grid-template-columns: 1fr;
-    border-radius: 26px;
-    gap: 14px;
+    gap: 16px;
   }
 
   .project-card {
@@ -343,46 +316,7 @@
     min-height: 316px;
     flex-direction: column;
     align-items: stretch;
-    --project-card-top-left: 4px;
-    --project-card-top-right: 4px;
-    --project-card-bottom-right: 4px;
-    --project-card-bottom-left: 4px;
-    --project-media-top-left: 4px;
-    --project-media-top-right: 4px;
-    --project-media-bottom-right: 4px;
-    --project-media-bottom-left: 4px;
-
-    border-radius: var(--project-card-top-left) var(--project-card-top-right) var(--project-card-bottom-right) var(--project-card-bottom-left);
     contain-intrinsic-size: auto 316px;
-  }
-
-  .projects-grid > .project-card,
-  .projects-grid > .project-card:nth-child(2),
-  .projects-grid > .project-card:nth-child(3),
-  .projects-grid > .project-card:nth-child(3n + 1):nth-last-child(-n + 3),
-  .projects-grid > .project-card:nth-child(2n + 1):nth-last-child(-n + 2) {
-    --project-card-top-left: 4px;
-    --project-card-top-right: 4px;
-    --project-card-bottom-right: 4px;
-    --project-card-bottom-left: 4px;
-    --project-media-top-left: 4px;
-    --project-media-top-right: 4px;
-    --project-media-bottom-right: 4px;
-    --project-media-bottom-left: 4px;
-  }
-
-  .projects-grid > .project-card:first-child {
-    --project-card-top-left: 26px;
-    --project-card-top-right: 26px;
-    --project-media-top-left: 24px;
-    --project-media-top-right: 24px;
-  }
-
-  .projects-grid > .project-card:last-child {
-    --project-card-bottom-right: 26px;
-    --project-card-bottom-left: 26px;
-    --project-media-bottom-right: 24px;
-    --project-media-bottom-left: 24px;
   }
 
   .projects-grid > .project-card:nth-child(odd) {
@@ -403,10 +337,9 @@
 
   .project-media {
     width: auto;
-    height: 104px;
-    min-height: 104px;
-    margin: 0;
-    border-radius: var(--project-card-top-left) var(--project-card-top-right) 0 0;
+    height: 160px;
+    min-height: 160px;
+    margin: 10px 10px 0;
   }
 
   .project-content {
