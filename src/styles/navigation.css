@@ -17,13 +17,13 @@
 
 .site-nav {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: 1fr auto;
   align-items: center;
   width: 100%;
   min-height: 64px;
   padding: 7px 8px 7px 10px;
   border: 1px solid var(--surface-border);
-  border-radius: 24px;
+  border-radius: 32px;
   background: var(--surface-glass);
   box-shadow: 0 12px 32px var(--shadow-color);
   backdrop-filter: blur(14px) saturate(1.1);
@@ -36,7 +36,7 @@
   overflow: hidden;
   place-items: center;
   border: 1px solid color-mix(in srgb, white 18%, transparent);
-  border-radius: 15px;
+  border-radius: 24px;
   background: #0b0c0b;
   text-decoration: none;
   transition: background 360ms ease;
@@ -89,7 +89,7 @@
   padding: 0;
   place-items: center;
   border: 0;
-  border-radius: 15px;
+  border-radius: 24px;
   color: var(--md-sys-color-on-surface-variant);
   background: transparent;
   cursor: pointer;

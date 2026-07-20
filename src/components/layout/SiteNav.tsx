@@ -40,17 +40,12 @@ export function SiteNav() {
   return (
     <header class="site-nav-wrap">
       <nav class="site-nav" aria-label="Primary navigation">
-        <A class="brand-mark" href="/" aria-label="brokiem, home" data-ripple>
-          <img src="/brokiem.webp" width="46" height="46" alt="" aria-hidden="true"/>
-        </A>
-
         <div class="nav-links">
           <A class="nav-link" classList={{"is-active": location.pathname === "/"}} href="/" data-ripple>Home</A>
           <A class="nav-link" classList={{"is-active": location.pathname.startsWith("/projects")}} href="/projects" data-ripple>Projects</A>
         </div>
 
         <div class="nav-actions">
-          <a class="nav-icon-link" href="https://github.com/brokiem" target="_blank" rel="noreferrer" aria-label="GitHub profile (opens in a new tab)" data-ripple><GitHubIcon/></a>
           <button
             type="button"
             class="mood-switcher"
