@@ -230,6 +230,7 @@
 
   .hero-title {
     font-size: clamp(3.55rem, 17vw, 4.85rem);
+    white-space: normal;
   }
 
   .hero-detail {

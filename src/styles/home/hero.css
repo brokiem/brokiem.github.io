@@ -68,8 +68,8 @@
 }
 
 .hero-title {
-  --hero-width: 100%;
   --hero-weight: 680;
+  --hero-scale-x: 1;
   --hero-skew: 0deg;
   --hero-tracking: -0.045em;
 
@@ -79,22 +79,19 @@
   font-size: clamp(3.8rem, 6.2vw, 5.7rem);
   font-style: normal;
   font-weight: var(--hero-weight);
-  font-stretch: var(--hero-width);
+  font-stretch: 100%;
   letter-spacing: var(--hero-tracking);
   line-height: 0.94;
-  text-wrap: balance;
-  transform: skewX(var(--hero-skew));
+  white-space: nowrap;
+  transform: skewX(var(--hero-skew)) scaleX(var(--hero-scale-x));
   transform-origin: left center;
   contain: layout;
-  transition: letter-spacing 220ms var(--spring);
   will-change: transform;
 }
 
 .hero-card.is-flex-shifted .hero-title {
-  --hero-width: 88%;
   --hero-weight: 560;
   --hero-skew: -2deg;
-  --hero-tracking: -0.025em;
 }
 
 .hero-title span {

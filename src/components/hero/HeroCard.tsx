@@ -81,9 +81,12 @@ export function HeroCard() {
   onMount(() => {
     if (!title) return;
     const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
-    spring = new SpringController(DEFAULT_AXES, {stiffness: 250, damping: 25, mass: 0.58}, (values) => {
+    spring = new SpringController(DEFAULT_AXES, {stiffness: 230, damping: 15, mass: 0.68}, (values) => {
       if (!title) return;
-      title.style.fontVariationSettings = `"wdth" ${values.width.toFixed(2)}, "wght" ${values.weight.toFixed(1)}`;
+      // Keep the font's layout width fixed and animate its visual width instead.
+      // Changing the wdth axis during the spring makes balanced text repeatedly reflow.
+      title.style.fontVariationSettings = `"wdth" 100, "wght" ${values.weight.toFixed(1)}`;
+      title.style.setProperty("--hero-scale-x", (values.width / 100).toFixed(4));
       title.style.setProperty("--hero-skew", `${values.slant.toFixed(2)}deg`);
     });
 
@@ -117,7 +120,7 @@ export function HeroCard() {
         }}
         onClick={click}
       >
-        <h1 ref={title} class="hero-title">I make <span>curious</span> little things.</h1>
+        <h1 ref={title} class="hero-title">I make <span>curious</span><br/>little things.</h1>
       </div>
 
       <span class="hero-detail" aria-hidden="true"><i/><i/><i/></span>
