@@ -1,19 +1,21 @@
 import {createContext, createMemo, createSignal, onCleanup, onMount, type ParentProps, useContext} from "solid-js";
 import {LanyardClient} from "./lanyard-client";
 import type {LanyardData} from "./lanyard.types";
-import {deriveActivityStatuses, deriveStatus, parseFeaturedProject, parseProjects} from "./presence-model";
+import {deriveActivityStatuses, deriveStatus, parseFeaturedProjectJson, parseProjectsJson} from "./presence-model";
 
 function createPresenceState() {
   const [data, setData] = createSignal<LanyardData>();
   const [loading, setLoading] = createSignal(true);
+  const projectsJson = createMemo(() => data()?.kv?.projects);
+  const featuredProjectJson = createMemo(() => data()?.kv?.featured_project ?? data()?.kv?.latest_project);
 
   return {
     data,
     loading,
     status: createMemo(() => deriveStatus(data())),
     activities: createMemo(() => deriveActivityStatuses(data())),
-    projects: createMemo(() => parseProjects(data())),
-    featuredProject: createMemo(() => parseFeaturedProject(data())),
+    projects: createMemo(() => parseProjectsJson(projectsJson())),
+    featuredProject: createMemo(() => parseFeaturedProjectJson(featuredProjectJson())),
     setData,
     setLoading,
   };

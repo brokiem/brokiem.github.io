@@ -10,6 +10,9 @@ export function ProjectsGrid() {
   let glow: ProjectGlowController | undefined;
 
   createEffect(() => {
+    // Rebuild the controllers only when the actual project collection changes,
+    // so newly rendered card nodes are observed for reveal and pointer effects.
+    presence.projects();
     const element = grid();
     if (!element) return;
     let reveal: ProjectRevealController | undefined;

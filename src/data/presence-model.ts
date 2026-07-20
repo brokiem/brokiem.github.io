@@ -48,11 +48,19 @@ export type Project = {
 };
 
 export function parseProjects(data?: LanyardData) {
-  return parseJson<Project[]>(data?.kv?.projects, []);
+  return parseProjectsJson(data?.kv?.projects);
+}
+
+export function parseProjectsJson(value?: string) {
+  return parseJson<Project[]>(value, []);
 }
 
 export function parseFeaturedProject(data?: LanyardData) {
-  return parseJson<Project | null>(data?.kv?.featured_project ?? data?.kv?.latest_project, null);
+  return parseFeaturedProjectJson(data?.kv?.featured_project ?? data?.kv?.latest_project);
+}
+
+export function parseFeaturedProjectJson(value?: string) {
+  return parseJson<Project | null>(value, null);
 }
 
 export function deriveStatus(data?: LanyardData): PresenceStatus | null {
