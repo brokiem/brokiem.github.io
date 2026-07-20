@@ -3,6 +3,7 @@ import {DeveloperModeTrigger} from "../components/feedback/DeveloperModeTrigger"
 import {SecretDiscovery} from "../components/feedback/SecretDiscovery";
 import {HeroCard} from "../components/hero/HeroCard";
 import {PortraitCard} from "../components/hero/PortraitCard";
+import {WorkbenchSection} from "../components/playground/WorkbenchSection";
 import {StatusCard} from "../components/presence/StatusCard";
 import {FeaturedProject} from "../components/projects/FeaturedProject";
 
@@ -16,6 +17,7 @@ export default function HomePage() {
         <AboutCard/>
         <FeaturedProject/>
       </div>
+      <WorkbenchSection/>
       <DeveloperModeTrigger/>
       <SecretDiscovery/>
     </main>
