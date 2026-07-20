@@ -230,7 +230,7 @@
   height: 100%;
   object-fit: cover;
   filter: grayscale(0.88) saturate(0.28) contrast(0.96);
-  transition: filter 420ms cubic-bezier(0.2, 0, 0, 1), transform 280ms var(--spring);
+  transition: filter 320ms cubic-bezier(0.2, 0, 0, 1), transform 280ms var(--spring);
 }
 
 .project-media img.is-broken {
@@ -251,7 +251,7 @@
   inset: 0;
   overflow: hidden;
   filter: grayscale(0.88) saturate(0.28) contrast(0.96);
-  transition: filter 420ms cubic-bezier(0.2, 0, 0, 1);
+  transition: filter 320ms cubic-bezier(0.2, 0, 0, 1);
 }
 
 .project-card:focus-within .project-media img,
