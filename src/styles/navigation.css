@@ -8,7 +8,7 @@
 .site-nav-wrap {
   position: sticky;
   z-index: 50;
-  top: 16px;
+  top: 20px;
   display: flex;
   justify-content: stretch;
   width: 100%;
