@@ -125,11 +125,11 @@
   }
 
   .portrait-card {
-    min-height: 300px;
+    min-height: 320px;
   }
 
   .portrait-card img {
-    min-height: 300px;
+    min-height: 320px;
   }
 
   .status-card {
@@ -241,7 +241,7 @@
 
   .portrait-card,
   .portrait-card img {
-    min-height: 360px;
+    min-height: 380px;
   }
 
   .portrait-card {

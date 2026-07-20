@@ -1,19 +1,22 @@
 .portrait-card {
   --tilt-x: 0deg;
   --tilt-y: 0deg;
+  --skew-x: 0deg;
+  --skew-y: 0deg;
   --glow-x: 50%;
   --glow-y: 50%;
 
   position: relative;
   grid-column: 9 / span 4;
-  min-height: 300px;
+  min-height: 320px;
   padding: 0;
   overflow: hidden;
   border-radius: 32px;
   background: #1f6f49;
   cursor: pointer;
-  transform: perspective(900px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
-  transition: box-shadow 300ms ease;
+  transform: perspective(780px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)) skew(var(--skew-x), var(--skew-y));
+  transform-style: preserve-3d;
+  animation-fill-mode: backwards;
   will-change: transform;
 }
 
@@ -26,7 +29,12 @@
   content: "";
 }
 
-.portrait-card img {
+.portrait-image-layer {
+  position: absolute;
+  inset: -2%;
+}
+
+.portrait-image-layer img {
   width: 100%;
   height: 100%;
   min-height: 300px;
@@ -99,7 +107,7 @@
   border-radius: 32px;
 }
 
-.portrait-card.has-found-grass img {
+.portrait-card.has-found-grass .portrait-image-layer img {
   filter: saturate(1.18) brightness(1.04);
   transform: scale(1.06);
 }
@@ -112,4 +120,3 @@
 .portrait-card.has-found-grass .portrait-label > span {
   transform: rotate(135deg);
 }
-
