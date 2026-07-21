@@ -13,7 +13,7 @@ export function ActionLink(props: ActionLinkProps) {
   const content = <><span>{props.children}</span>{ !props.hideChevron ? <ChevronIcon/> : <></>}</>;
 
   if (props.href.startsWith("/")) {
-    return <A href={props.href} class={className()} data-ripple>{content}</A>;
+    return <A href={props.href} class={className()} noScroll data-ripple>{content}</A>;
   }
 
   return <a href={props.href} class={className()} target="_blank" rel="noreferrer" data-ripple>{content}</a>;

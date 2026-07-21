@@ -41,8 +41,8 @@ export function SiteNav() {
     <header class="site-nav-wrap">
       <nav class="site-nav" aria-label="Primary navigation">
         <div class="nav-links">
-          <A class="nav-link" classList={{"is-active": location.pathname === "/"}} href="/" data-ripple>Home</A>
-          <A class="nav-link" classList={{"is-active": location.pathname.startsWith("/projects")}} href="/projects" data-ripple>Projects</A>
+          <A class="nav-link" classList={{"is-active": location.pathname === "/"}} href="/" noScroll data-ripple>Home</A>
+          <A class="nav-link" classList={{"is-active": location.pathname.startsWith("/projects")}} href="/projects" noScroll data-ripple>Projects</A>
         </div>
 
         <div class="nav-actions">
