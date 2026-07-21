@@ -262,11 +262,26 @@
 }
 
 .illustration-shape {
+  --shape-rotation: 0deg;
+  --shape-hover-x: 0px;
+  --shape-hover-y: 0px;
+  --shape-hover-rotation: 0deg;
+  --shape-hover-scale-x: 1;
+  --shape-hover-scale-y: 1;
+
   position: absolute;
   display: block;
+  transform: rotate(var(--shape-rotation));
+  transform-origin: center;
 }
 
 .illustration-shape-one {
+  --shape-hover-x: 12px;
+  --shape-hover-y: -7px;
+  --shape-hover-rotation: -7deg;
+  --shape-hover-scale-x: 1.08;
+  --shape-hover-scale-y: 0.84;
+
   top: 25px;
   left: 24px;
   width: 104px;
@@ -276,6 +291,12 @@
 }
 
 .illustration-shape-two {
+  --shape-hover-x: -11px;
+  --shape-hover-y: -10px;
+  --shape-hover-rotation: 9deg;
+  --shape-hover-scale-x: 0.86;
+  --shape-hover-scale-y: 1.12;
+
   right: 54px;
   bottom: -18px;
   width: 90px;
@@ -285,13 +306,19 @@
 }
 
 .illustration-shape-three {
+  --shape-rotation: 12deg;
+  --shape-hover-x: -7px;
+  --shape-hover-y: 10px;
+  --shape-hover-rotation: -14deg;
+  --shape-hover-scale-x: 1.16;
+  --shape-hover-scale-y: 1.16;
+
   top: 26px;
   right: 28px;
   width: 44px;
   height: 44px;
   border-radius: 14px;
   background: color-mix(in srgb, var(--project-tertiary) 52%, var(--md-sys-color-surface-container-highest));
-  transform: rotate(12deg);
 }
 
 .project-illustration strong {
@@ -351,11 +378,12 @@
 }
 
 .project-illustration--3 .illustration-shape-three {
+  --shape-rotation: 0deg;
+
   top: auto;
   right: 44px;
   bottom: 22px;
   border-radius: 50%;
-  transform: none;
 }
 
 .project-illustration--4 .illustration-shape-one {
@@ -396,23 +424,25 @@
 }
 
 .project-illustration--5 .illustration-shape-three {
+  --shape-rotation: -12deg;
+
   top: auto;
   right: auto;
   bottom: 22px;
   left: 46%;
   width: 34px;
   height: 34px;
-  transform: rotate(-12deg);
 }
 
 .project-illustration--6 .illustration-shape-one {
+  --shape-rotation: -10deg;
+
   top: auto;
   bottom: -28px;
   left: 24px;
   width: 92px;
   height: 116px;
   border-radius: 28px;
-  transform: rotate(-10deg);
 }
 
 .project-illustration--6 .illustration-shape-two {
@@ -424,12 +454,13 @@
 }
 
 .project-illustration--6 .illustration-shape-three {
+  --shape-rotation: 0deg;
+
   top: 38px;
   right: 40%;
   width: 66px;
   height: 24px;
   border-radius: 999px;
-  transform: none;
 }
 
 .project-illustration--7 .illustration-shape-one {
@@ -451,12 +482,84 @@
 }
 
 .project-illustration--7 .illustration-shape-three {
+  --shape-rotation: 0deg;
+
   top: 18px;
   right: 24px;
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  transform: none;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .project-card .illustration-shape {
+    transition:
+      transform 500ms cubic-bezier(0.2, 1.14, 0.34, 1),
+      border-radius 440ms cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  .project-card .illustration-shape-one {
+    transition-delay: 70ms;
+  }
+
+  .project-card .illustration-shape-two {
+    transition-delay: 35ms;
+  }
+
+  .projects-grid > .project-card:nth-child(even) .illustration-shape-one {
+    --shape-hover-x: -12px;
+    --shape-hover-rotation: 7deg;
+  }
+
+  .projects-grid > .project-card:nth-child(even) .illustration-shape-two {
+    --shape-hover-x: 11px;
+    --shape-hover-rotation: -9deg;
+  }
+
+  .projects-grid > .project-card:nth-child(even) .illustration-shape-three {
+    --shape-hover-x: 7px;
+    --shape-hover-rotation: 14deg;
+  }
+
+  .project-card:hover .illustration-shape {
+    transform:
+      translate3d(var(--shape-hover-x), var(--shape-hover-y), 0)
+      rotate(calc(var(--shape-rotation) + var(--shape-hover-rotation)))
+      scale(var(--shape-hover-scale-x), var(--shape-hover-scale-y));
+    transition-duration: 640ms, 540ms;
+    transition-timing-function:
+      cubic-bezier(0.16, 1.32, 0.3, 1),
+      cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: transform, border-radius;
+  }
+
+  .project-card:hover .illustration-shape-one {
+    border-radius: 42% 58% 34% 66% / 58% 36% 64% 42%;
+    transition-delay: 0ms;
+  }
+
+  .project-card:hover .illustration-shape-two {
+    border-radius: 58% 42% 62% 38% / 38% 60% 40% 62%;
+    transition-delay: 38ms;
+  }
+
+  .project-card:hover .illustration-shape-three {
+    border-radius: 50% 24% 48% 30% / 30% 52% 28% 50%;
+    transition-delay: 76ms;
+  }
+
+  .project-card .project-illustration strong {
+    transition: transform 500ms cubic-bezier(0.2, 1.1, 0.34, 1);
+  }
+
+  .project-card:hover .project-illustration strong {
+    transform:
+      translate3d(0, -3px, 0)
+      rotate(calc(var(--illustration-rotation) + 2deg))
+      scale(1.035);
+    transition-duration: 620ms;
+    transition-timing-function: cubic-bezier(0.16, 1.24, 0.3, 1);
+  }
 }
 
 .project-content {
