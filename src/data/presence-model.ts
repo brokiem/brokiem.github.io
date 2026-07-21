@@ -33,6 +33,10 @@ export type ActivityStatus = {
   activityId: string;
   activityType: number;
   text: string;
+  compact: {
+    eyebrow: string;
+    title: string;
+  };
   tooltip: ActivityTooltip;
 };
 
@@ -173,12 +177,23 @@ function formatActivity(activity: LanyardActivity, others: LanyardActivity[], da
     .filter((line, index, all) => all.indexOf(line) === index);
   const prefixes = ["Playing", "Streaming", "Listening to", "Watching", "", "Competing in"];
   const text = activity.type === CUSTOM_ACTIVITY ? customActivityText(activity) : `${prefixes[activity.type] ?? ""} ${value}`.trim();
+  const compactTitle = spotify
+    ? data.spotify?.artist || activity.state || activity.details || title
+    : activity.type === 2
+      ? activity.state || activity.details || title
+      : activity.type === 3
+        ? activity.details || activity.state || title
+        : title;
 
   return {
     type: "activity",
     activityId: activityKey(activity),
     activityType: activity.type,
     text,
+    compact: {
+      eyebrow: activityEyebrow(activity.type),
+      title: compactTitle,
+    },
     tooltip: {
       eyebrow: activityEyebrow(activity.type),
       title,

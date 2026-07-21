@@ -64,13 +64,115 @@
 .signal-equalizer rect:nth-child(3) { animation-delay: -1.2s; }
 
 .status-copy {
+  position: relative;
   block-size: var(--status-content-size, 58px);
   min-height: 58px;
+  overflow: visible;
   color: var(--md-sys-color-on-surface-variant);
   font-size: 1rem;
   font-weight: 550;
   line-height: 1.3;
-  transition: block-size 480ms var(--spring);
+  transition: block-size 520ms var(--spring);
+}
+
+.status-content-layer {
+  position: absolute;
+  inset: 0;
+  transform-origin: center;
+}
+
+.status-content-layer--compact {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition:
+    opacity 240ms cubic-bezier(0.2, 0, 0, 1) 70ms,
+    transform 420ms var(--spring),
+    visibility 310ms;
+}
+
+.status-content-layer--inline {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px) scale(0.96);
+  transition:
+    opacity 150ms cubic-bezier(0.2, 0, 0, 1),
+    transform 400ms var(--spring),
+    visibility 150ms;
+}
+
+.status-copy.is-rich-activity .status-content-layer--compact {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-7px) scale(0.97);
+  transition:
+    opacity 150ms cubic-bezier(0.2, 0, 0, 1),
+    transform 380ms var(--spring),
+    visibility 150ms;
+}
+
+.status-copy.is-rich-activity .status-content-layer--inline {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition:
+    opacity 240ms cubic-bezier(0.2, 0, 0, 1) 70ms,
+    transform 500ms var(--spring),
+    visibility 310ms;
+}
+
+.activity-inline {
+  min-height: 132px;
+  padding: 12px;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--md-sys-color-outline-variant) 28%, transparent);
+  border-radius: 26px;
+  color: var(--md-sys-color-on-surface);
+  background: color-mix(in srgb, var(--md-sys-color-primary-container) 22%, var(--md-sys-color-surface-container-high));
+}
+
+.activity-inline--listening {
+  border-radius: 26px;
+  background: color-mix(in srgb, var(--md-sys-color-tertiary-container) 38%, var(--md-sys-color-surface-container-high));
+}
+
+.activity-inline .activity-tooltip-content {
+  min-height: 108px;
+  grid-template-columns: 108px minmax(0, 1fr);
+  gap: 14px;
+}
+
+.activity-inline--listening .activity-tooltip-content {
+  grid-template-columns: minmax(0, 1fr) 108px;
+}
+
+.activity-inline .activity-tooltip-copy { align-self: center; }
+.activity-inline--listening .activity-tooltip-copy { grid-column: 1; }
+
+.activity-inline .activity-artwork,
+.activity-inline .activity-artwork > img,
+.activity-inline .activity-artwork-empty {
+  width: 108px;
+  height: 108px;
+}
+
+.activity-inline .activity-artwork { align-self: center; }
+.activity-inline--listening .activity-artwork { grid-column: 2; }
+
+.activity-inline .activity-tooltip-title { font-size: 1rem; }
+.activity-inline .activity-tooltip-line { font-size: 0.72rem; }
+.activity-inline .activity-progress { margin-top: 7px; }
+.activity-inline .activity-progress-track,
+.activity-inline .activity-progress-canvas { height: 11px; }
+
+.status-copy.is-rich-activity .activity-inline .activity-artwork {
+  animation: activity-rich-artwork-enter 500ms var(--spring) 55ms both;
+}
+
+.status-copy.is-rich-activity .activity-inline .activity-tooltip-copy {
+  animation: activity-rich-copy-enter 440ms cubic-bezier(0.2, 0, 0, 1) 105ms both;
 }
 
 .activity-signals {
@@ -370,4 +472,28 @@
   border-color: color-mix(in srgb, var(--md-sys-color-primary) 18%, transparent);
   color: var(--md-sys-color-primary);
   outline-color: #8ab4f8;
+}
+
+@keyframes activity-rich-artwork-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.88) rotate(-2deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+@keyframes activity-rich-copy-enter {
+  from {
+    opacity: 0;
+    transform: translateY(9px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

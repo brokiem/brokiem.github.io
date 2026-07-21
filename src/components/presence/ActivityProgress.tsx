@@ -1,20 +1,21 @@
-import {createMemo, createSignal, onCleanup, Show} from "solid-js";
+import {createMemo, createSignal, onCleanup, Show, type Accessor} from "solid-js";
 import type {ActivityProgress as ActivityProgressData} from "../../data/presence-model";
 import {WavyProgress} from "./WavyProgress";
 
-export function ActivityProgress(props: {progress: ActivityProgressData}) {
+export function ActivityProgress(props: {progress: Accessor<ActivityProgressData>}) {
   const [now, setNow] = createSignal(Date.now());
   const timer = window.setInterval(() => setNow(Date.now()), 1000);
   onCleanup(() => window.clearInterval(timer));
 
   const info = createMemo(() => {
-    if (props.progress.start && props.progress.end) {
-      const duration = Math.max(props.progress.end - props.progress.start, 1);
-      const elapsed = Math.min(Math.max(now() - props.progress.start, 0), duration);
+    const progress = props.progress();
+    if (progress.start && progress.end) {
+      const duration = Math.max(progress.end - progress.start, 1);
+      const elapsed = Math.min(Math.max(now() - progress.start, 0), duration);
       return {label: formatDuration(elapsed), durationLabel: formatDuration(duration), value: elapsed / duration, hasBar: true};
     }
-    if (props.progress.start) return {label: `${formatDuration(Math.max(now() - props.progress.start, 0))} elapsed`, durationLabel: null, value: 0, hasBar: false};
-    if (props.progress.end) return {label: `${formatDuration(Math.max(props.progress.end - now(), 0))} remaining`, durationLabel: null, value: 0, hasBar: false};
+    if (progress.start) return {label: `${formatDuration(Math.max(now() - progress.start, 0))} elapsed`, durationLabel: null, value: 0, hasBar: false};
+    if (progress.end) return {label: `${formatDuration(Math.max(progress.end - now(), 0))} remaining`, durationLabel: null, value: 0, hasBar: false};
     return null;
   });
 

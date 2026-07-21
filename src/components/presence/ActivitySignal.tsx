@@ -45,8 +45,8 @@ export function ActivitySignal(props: ActivitySignalProps) {
           {props.status().activityType === 2 ? <SpotifyIcon/> : <GamepadIcon class="status-icon"/>}
         </span>
         <span class="activity-signal-copy">
-          <small>{props.status().tooltip.eyebrow}</small>
-          <strong>{props.status().tooltip.title}</strong>
+          <small>{props.status().compact.eyebrow}</small>
+          <strong>{props.status().compact.title}</strong>
         </span>
         <span class="activity-signal-chevron" aria-hidden="true">›</span>
       </button>
