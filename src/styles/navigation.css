@@ -21,7 +21,7 @@
   align-items: center;
   width: 100%;
   min-height: 0;
-  padding: 6px;
+  padding: 5px 6px;
   border: 1px solid var(--surface-border);
   border-radius: 32px;
   background: var(--surface-glass);
