@@ -39,10 +39,12 @@ const stages = [
 ] as const;
 
 const principles = [
-  "Fast enough to feel obvious",
-  "Clear enough to explore",
-  "Small enough to finish",
-  "Odd enough to remember",
+  "Java",
+  "PHP",
+  "Dart & Flutter",
+  "C#",
+  "TypeScript",
+  "HTML & CSS",
 ] as const;
 
 export function WorkbenchSection() {

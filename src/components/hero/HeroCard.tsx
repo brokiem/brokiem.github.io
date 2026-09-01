@@ -105,7 +105,7 @@ export function HeroCard() {
 
   return (
     <section class="expressive-card hero-card" classList={{"is-flex-shifted": shifted()}}>
-      <span class="hero-kicker home-hero-kicker">Independent developer</span>
+      <span class="hero-kicker home-hero-kicker"></span>
       <div
         class="hero-title-interaction"
         onPointerMove={pointerMove}
